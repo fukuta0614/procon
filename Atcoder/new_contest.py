@@ -35,6 +35,7 @@ for q in questions:
 # make CmakeLists.txt
 version = 3.10
 head = ["cmake_minimum_required(VERSION {})\n".format(version),
+        "add_definitions(-DLOCAL)"
         "project({})\n".format(contest_name),
         "set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)\n",
         "\n"]
@@ -60,10 +61,13 @@ typedef long long ll;
 #define INF ((1 << 16)-1)
 #define MOD (1000000007)
 #define print(arr, n) REP(i, n) cout << arr[i] << " ";
+struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
 int main() {
+#ifdef LOCAL
     std::ifstream in("../arg.txt");
     std::cin.rdbuf(in.rdbuf());
+#endif
 
     int N;
     cin >> N;

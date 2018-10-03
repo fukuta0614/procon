@@ -1,9 +1,11 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+S = input()
+K = int(input())
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+for i in range(min(len(S), K)):
+    s = S[i]
+    if s != '1':
+        print(s)
+        break
+else:
+    print('1')
