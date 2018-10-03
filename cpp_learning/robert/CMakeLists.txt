@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.6)
+#project(cpp_learning)
+
+FILE(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *)
+get_filename_component(PARENT_DIR ${CMAKE_CURRENT_SOURCE_DIR} PATH)
+file(RELATIVE_PATH dir_name ${PARENT_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+FOREACH(child ${children})
+    if(${child} MATCHES ".cpp$")
+        string(REPLACE ".cpp" "" s ${child})
+        message("${dir_name}_${s} ${child}")
+        add_executable("${dir_name}_${s}" ${child})
+    ENDIF()
+ENDFOREACH()

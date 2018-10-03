@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/fukuta-mil/work_space/procon/cpp_learning/lib.cpp
+lib.h
+/Users/fukuta-mil/work_space/procon/cpp_learning/lib.h
+
+/Users/fukuta-mil/work_space/procon/cpp_learning/lib.h
+iostream
+-
+string
+-
+
+/Users/fukuta-mil/work_space/procon/cpp_learning/main.cpp
+iostream
+-
+lib.h
+/Users/fukuta-mil/work_space/procon/cpp_learning/lib.h
+
