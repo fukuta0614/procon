@@ -6,7 +6,7 @@ if len(sys.argv) == 3:
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     questions = [ alphabets[i] for i in range(int(sys.argv[2]))]
 else:
-    questions = ['a', 'b', 'c', 'd']
+    questions = ['a', 'b', 'c', 'd', 'e', 'f']
 
 os.mkdir(contest_name)
 
@@ -35,7 +35,7 @@ for q in questions:
 # make CmakeLists.txt
 version = 3.10
 head = ["cmake_minimum_required(VERSION {})\n".format(version),
-        "add_definitions(-DLOCAL)"
+        "add_definitions(-DLOCAL)\n"
         "project({})\n".format(contest_name),
         "set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)\n",
         "\n"]
@@ -49,38 +49,12 @@ with open(os.path.join(contest_name, "CMakeLists.txt"), "w") as file:
     file.writelines(output)  # リスト型変数を改行なしでファイルに書き込む
 
 
-content = '''
-#include <bits/stdc++.h>
-using namespace std;
+with open("./cpp_template.cpp") as f:
+    cpp_template = f.read()
 
-typedef long long ll;
-#define debug(x) cout << #x << ": " << (x) << endl
-#define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
-#define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
-#define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
-#define INF ((1 << 16)-1)
-#define MOD (1000000007)
-#define print(arr, n) REP(i, n) cout << arr[i] << " ";
-struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
-
-int main() {
-#ifdef LOCAL
-    std::ifstream in("../arg.txt");
-    std::cin.rdbuf(in.rdbuf());
-#endif
-
-    int N;
-    cin >> N;
-
-    return 0;
-}
-
-
-'''
-# make .cpp
 for exe in executable:
     with open(os.path.join(contest_name, "{}.cpp".format(exe.split('_')[-1])), "w") as cpp_file:
-        cpp_file.write("// {}".format(exe))
-        cpp_file.write(content)
+        cpp_file.write("// {}\n".format(exe))
+        cpp_file.write(cpp_template)
 
 

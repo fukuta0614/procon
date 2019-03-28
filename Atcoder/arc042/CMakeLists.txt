@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+project(arc042)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+
+add_executable(arc042_a a.cpp)
+add_executable(arc042_b b.cpp)
+add_executable(arc042_c c.cpp)
+add_executable(arc042_d d.cpp)
+add_executable(arc042_d2 d2.cpp)

@@ -18,3 +18,4 @@ for l in range(N):
         ref ^= A[l]
 
 print(ans)
+
