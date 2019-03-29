@@ -12,6 +12,7 @@ typedef pair<int, int> P;
 #define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
 #define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
 #define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
+#define REPN_REV(i, m, n) for (int (i) = (int)(n) - 1 ; (i) >= m ; --(i))
 #define INF ((1 << 29)-1)
 #define MOD (1000000007)
 
@@ -35,8 +36,46 @@ int main() {
     std::cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int N, K;
+    cin >> N >> K;
+    string S;
+    cin >> S;
+
+    string minS = S;
+    string T = S;
+
+    sort(ALL(minS));
+    REP(i, N){
+        int x = 0;
+        REPN_REV(j, i, N) {
+            if (T[j] == minS[i]) { swap(T[i], T[j]); x = j; break; }
+        }
+
+        int sm = 0;
+        REP(j, N){
+            if (T[j] != S[j]) sm++;
+        }
+
+        if (sm > K){
+            swap(T[i], T[x]);
+
+            vector<int> mismatch;
+            REPN(j, i, N){
+                if (T[j] != S[j]) mismatch.emplace_back(j);
+            }
+
+            string s;
+            for (auto idx: mismatch) s += T[idx];
+            sort(ALL(s));
+
+            REP(j, s.size()){
+                T[mismatch[j]] = s[j];
+            }
+            COUT(T);
+            return 0;
+        }
+    }
+    COUT(T);
 
     return 0;
 }

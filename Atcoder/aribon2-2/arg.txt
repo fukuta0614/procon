@@ -1,4 +1,2 @@
-3
-higashikyoto
-kupconsitetokyotokyoto
-tokyotokyoto
+10 4
+dasadasdfa
