@@ -7,27 +7,19 @@ using namespace std;
 
 typedef long long ll;
 typedef unsigned long long ull;
-typedef pair<int, int> P;
+typedef pair<ll, ll> P;
 
 #define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
 #define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
 #define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
-#define INF ((1 << 29)-1)
+#define INF (1ll << 40)
 #define MOD (1000000007)
 
 #define ALL(x) x.begin(), x.end()
-#define UNIQUE(v) v.erase( unique(v.begin(), v.end()), v.end() );
-#define CHAR2INT(c) (c - '0')
 #define COUT(x) cout << x << endl
 #define COUT_2DARR(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 
-int mod_pow(ll a,ll b,int mo){int ans=1;do{if(b&1)ans=1ll*ans*a%mo;a=1ll*a*a%mo;}while(b>>=1);return ans;}
-int gcd(int a,int b){return b?gcd(b,a%b):a;}
-int dx[8]={ 1, 0, -1, 0, -1, 1, -1, 1};
-int dy[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
-
 struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
-
 
 int main() {
 #ifdef LOCAL
@@ -35,8 +27,26 @@ int main() {
     std::cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
+    ull N;
     cin >> N;
 
+    vector<P> G(N);
+    ll x, w;
+    REP(i, N) {
+        cin >> x >> w;
+        G[i].first = x - w;
+        G[i].second = x + w;
+    }
+    sort(ALL(G), [](const P& x, const P& y) { return x.second < y.second; });
+
+    ll ans = 0, t = -INF;
+    for (auto p: G){
+        if (t <= p.first){
+            t = p.second;
+            ans++;
+        }
+    }
+
+    COUT(ans);
     return 0;
 }

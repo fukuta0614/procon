@@ -1,4 +1,4 @@
-// aribon2-2_f
+// exawizards2019_c
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -19,8 +19,8 @@ typedef pair<int, int> P;
 #define COUT(x) cout << x << endl
 #define COUT_2DARR(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 
-
 struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
+
 
 int main() {
 #ifdef LOCAL
@@ -28,22 +28,26 @@ int main() {
     std::cin.rdbuf(in.rdbuf());
 #endif
 
-    ull N;
-    cin >> N;
-    vector<P> boxes(N);
-    REP(i, N){cin >> boxes[i].first >> boxes[i].second;}
-    sort(ALL(boxes), [](const P& x, const P& y) {
-        return x.first != y.first ? x.first < y.first : x.second > y.second;
-    });
+    int N, Q;
+    cin >> N >> Q;
 
-    vector<int> lis(N+1, INF);
-    REP(i, N){
-        auto it = lower_bound(ALL(lis), boxes[i].second);
-        (*it) = boxes[i].second;
-    }
+    string s;
+    cin >> s;
 
-    REP(i, N+1) {
-        if (lis[i] == INF) { COUT(i); return 0;}
+    vector<P> q(Q);
+    REP(i, Q){cin >> q[i].first >> q[i].second;}
+
+    REP(i, 2){
+
+        int inf = 0;
+        int sup = N;
+
+        while (sup - inf > 1){
+
+            const int mid = (sup + inf) / 2;
+
+
+        }
     }
 
     return 0;
