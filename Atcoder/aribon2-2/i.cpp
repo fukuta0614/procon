@@ -35,8 +35,13 @@ int main() {
     std::cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    ull X,Y;
+    cin >> X >> Y;
+
+    int ans;
+    for(ans=0;X<=Y;X*=2,ans++){}
+
+    COUT(ans);
 
     return 0;
 }

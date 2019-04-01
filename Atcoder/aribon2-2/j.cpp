@@ -38,5 +38,24 @@ int main() {
     int N;
     cin >> N;
 
+    vector<int> W(N);
+    REP(i, N){cin >> W[i];}
+
+    vector<int> count(N,0), min_size(N, INF);
+
+    REP(i, N){
+        auto it = lower_bound(ALL(min_size), W[i]);
+        int idx = distance(min_size.begin(), it);
+        min_size[idx] = W[i];
+        count[idx]++;
+    }
+
+    int ans = 0;
+    REP(i, N){
+        if (min_size[i] == INF) break;
+        ans++;
+    }
+    COUT(ans);
+
     return 0;
 }
