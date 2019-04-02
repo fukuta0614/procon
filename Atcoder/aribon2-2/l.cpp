@@ -28,6 +28,18 @@ int dy[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
 
 struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+vector<string> split(const string &s, char delim) {
+    vector<string> elems;
+    stringstream ss(s);
+    string item;
+    while (getline(ss, item, delim)) {
+    if (!item.empty()) {
+            elems.push_back(item);
+        }
+    }
+    return elems;
+}
+
 
 int main() {
 #ifdef LOCAL

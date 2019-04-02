@@ -35,8 +35,34 @@ int main() {
     std::cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int T, N;
+    cin >> T >> N;
+
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
+
+    int M;
+    cin >> M;
+    vector<int> B(M);
+    REP(i, M) cin >> B[i];
+
+    int idx = 0;
+    REP(i, M){
+        while (idx < N){
+            if (B[i] < A[idx]) {
+                COUT("no");
+                return 0;
+            }
+            if (B[i] - A[idx] <= T) break;
+            idx++;
+        }
+        if (idx == N){
+            COUT("no");
+            return 0;
+        }
+        idx++;
+    }
+    COUT("yes");
 
     return 0;
 }

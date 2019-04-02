@@ -37,6 +37,27 @@ int main() {
 
     int N;
     cin >> N;
+    priority_queue<ull> q;
+    ull a;
+    REP(i, N) { cin >> a; q.push(a);}
+
+    ull ans = 0;
+    ull x,y;
+    if (N == 1){
+        COUT(q.top());
+        return 0;
+    }
+    while (true){
+        x = q.top(); q.pop();
+        y = q.top(); q.pop();
+        ans += x + y;
+        if (q.empty()){
+            ans += x + y;
+            break;
+        }
+        q.push(x+y);
+    }
+    COUT(ans);
 
     return 0;
 }

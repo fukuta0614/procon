@@ -5,16 +5,9 @@
 #endif
 using namespace std;
 
-typedef long long ll;
-typedef unsigned long long ull;
-typedef pair<int, int> P;
-
 #define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
 #define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
-#define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
-#define REPN_REV(i, m, n) for (int (i) = (int)(n) - 1 ; (i) >= m ; --(i))
 #define INF ((1 << 29)-1)
-#define MOD (1000000007)
 
 #define ALL(x) x.begin(), x.end()
 #define COUT(x) cout << x << endl
@@ -22,54 +15,34 @@ typedef pair<int, int> P;
 
 struct PreMain {PreMain(){std::cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-
-
 int main() {
 #ifdef LOCAL
     std::ifstream in("../arg.txt");
     std::cin.rdbuf(in.rdbuf());
 #endif
-
     int N, K;
-    cin >> N >> K;
     string S;
+
+    cin >> N >> K;
     cin >> S;
 
-    string minS = S;
     string T = S;
-
-    sort(ALL(minS));
+    string ans = S;
     REP(i, N){
-        int x = 0;
-        REPN_REV(j, i, N) {
-            if (T[j] == minS[i]) { swap(T[i], T[j]); x = j; break; }
-        }
-
-        int sm = 0;
-        REP(j, N){
-            if (T[j] != S[j]) sm++;
-        }
-
-        if (sm > K){
-            swap(T[i], T[x]);
-
-            vector<int> mismatch;
-            REPN(j, i, N){
-                if (T[j] != S[j]) mismatch.emplace_back(j);
+        int minSm = INF;
+        REPN(j, i, N) {
+            string tmp = T;
+            swap(tmp[i], tmp[j]);
+            int sm = 0;
+            REP(k, N) { if (tmp[k] != S[k]) sm++; }
+            if (sm <= K && (tmp.substr(0,i+1) < ans.substr(0,i+1) || (tmp.substr(0,i+1) == ans.substr(0,i+1) && sm < minSm))){
+                ans = tmp;
+                minSm = sm;
             }
-
-            string s;
-            for (auto idx: mismatch) s += T[idx];
-            sort(ALL(s));
-
-            REP(j, s.size()){
-                T[mismatch[j]] = s[j];
-            }
-            COUT(T);
-            return 0;
         }
+        T = ans;
     }
-    COUT(T);
+    COUT(ans);
 
     return 0;
 }

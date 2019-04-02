@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project(tdpc)
+add_definitions(-DLOCAL)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 
 add_executable(tdpc_a a.cpp)
 add_executable(tdpc_b b.cpp)
 add_executable(tdpc_c c.cpp)
 add_executable(tdpc_d d.cpp)
+add_executable(tdpc_d2 d2.cpp)
 add_executable(tdpc_e e.cpp)
 add_executable(tdpc_f f.cpp)
 add_executable(tdpc_g g.cpp)
