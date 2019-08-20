@@ -1,1 +1,0 @@
-/usr/local/bin/g++   -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/sample2.dir/sample2.cpp.o  -o sample2 

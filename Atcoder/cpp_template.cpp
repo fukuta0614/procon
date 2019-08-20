@@ -24,8 +24,7 @@ struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<se
 
 int main() {
 #ifdef LOCAL
-    ifstream in("../arg.txt");
-    cin.rdbuf(in.rdbuf());
+    ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
     int N;

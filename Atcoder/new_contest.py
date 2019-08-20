@@ -35,7 +35,9 @@ for q in questions:
 # make CmakeLists.txt
 version = 3.10
 head = ["cmake_minimum_required(VERSION {})\n".format(version),
-        "add_definitions(-DLOCAL)\n"
+        "add_definitions(-DLOCAL)\n",
+        "add_definitions(-ftrapv)\n",
+        "add_definitions(-D_GLIBCXX_DEBUG)\n",
         "project({})\n".format(contest_name),
         "set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)\n",
         "\n"]

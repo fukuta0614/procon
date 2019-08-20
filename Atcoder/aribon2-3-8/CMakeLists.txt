@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+project(aribon2-3-8)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+
+add_executable(aribon2-3-8_a a.cpp)
+add_executable(aribon2-3-8_b b.cpp)
+add_executable(aribon2-3-8_c c.cpp)
+add_executable(aribon2-3-8_d d.cpp)
+add_executable(aribon2-3-8_e e.cpp)
+add_executable(aribon2-3-8_f f.cpp)

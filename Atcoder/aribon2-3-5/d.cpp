@@ -23,14 +23,58 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+ll dp[2001][2001];
+ll dp2[2001][2001];
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt");
     cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int N,M,Q;
+    cin >> N >> M >> Q;
+
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
+
+    vector<P> query(Q);
+    REP(i, Q) cin >> query[i].first >> query[i].second;
+
+    dp[0][0] = 1;
+    REP(i, N){
+        dp[i+1][0] = 1;
+        REPN(j, 1, M+1) {
+            if (j >= A[i]+1){
+                dp[i+1][j] = dp[i+1][j-1] + dp[i][j] - dp[i][j-A[i]-1] + MOD;
+            } else {
+                dp[i+1][j] = dp[i+1][j-1] + dp[i][j];
+            }
+            dp[i+1][j] %= MOD;
+        }
+    }
+
+    REP(i, N){
+        dp2[i][0] = 1;
+        REPN(j, 1, M+1){
+            if (j >= A[i]+1){
+                dp2[i][j] = dp[N][j] - dp[N][j-1] + dp2[i][j-A[i]-1] + MOD;
+            } else {
+                dp2[i][j] = dp[N][j] - dp[N][j-1] + MOD;
+            }
+            dp2[i][j] %= MOD;
+        }
+    }
+
+    REP(i, Q){
+        int k = query[i].first-1;
+        int x = query[i].second;
+
+        print(dp2[k][M-x]);
+
+    }
+
+
 
     return 0;
 }
