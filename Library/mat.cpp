@@ -44,9 +44,9 @@ template <typename T> struct Mat {
         REP(i, m) REP(j, n) y[i] += val[i][j] * x[j];
         return y;
     }
-};
-template <typename T> ostream& operator<<(ostream& os, const Mat<T>& mat) {cout << mat.val; return os;}
 
+    friend ostream& operator<<(ostream& os, const Mat<T>& mat) {cout << mat.val; return os;}
+};
 
 // is_extended: Aが拡大係数だったとき、最終列は掃き出さない
 template <typename T>
