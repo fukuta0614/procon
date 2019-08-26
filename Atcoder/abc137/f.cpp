@@ -1,4 +1,4 @@
-// tdpc_q
+// abc137_f
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -23,7 +23,7 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-const int mod = 1e9 + 7;
+int mod = 1e9 + 7;
 struct mint {
     ll x;
     mint(ll a=0){x = a>=0 ? a%mod : mod-(-a)%mod;}
@@ -58,65 +58,50 @@ struct mint {
     friend istream& operator>>(istream& is, mint& m) { return is >> m.x; }
 };
 
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N, L;
-    cin >> N >> L;
+    int p;
+    cin >> p;
+    mod = p;
 
-    vector<P> W; // (文字数, 2進数として読んだときの数)
-    REP(i, N) {
-        string s; cin >> s;
-        int w = 0;
-        REP(k, s.size()) w |= (s[s.size()-1-k] == '1') << k;
-        W.emplace_back(s.size(), w);
+    // (x-0)*(x-1)*...*(x-(p-1))を求めておく。
+    vector<mint> numerator_all(p+1, 0);
+    numerator_all[0] = 1;
+    REP(i, p){
+        auto prev = numerator_all;
+        numerator_all.assign(p+1, 0);
+
+        // (x-0)*(x-1)*...*(x-(i-1)) -> (c0 + c1 x + c2 x^2 +..)とすると
+        // (x-0)*(x-1)*...*(x-(i-1))*(x-i) -> (c0 + c1 x + c2 x^2 +..) (x - i)なので展開する
+        REP(k, p) numerator_all[k+1] += prev[k];
+        REP(k, p) numerator_all[k] -= prev[k] * i;
     }
 
-    // dp[i][j][k]
-    // i文字まで伸ばしたときの
-    // 直近7文字がjで、
-    // 直近8文字のなかで文字列の切れ目となるような場所にはbitがたつような数を作るとk となるような数
-    mint dp[L+1][1 << 7][1 << 8];
+    // ラグランジュ補間
+    vector<mint> ans(p, 0);
+    REP(i, p){
+        int a; cin >> a;
+        if (a == 0) continue;
 
-    dp[0][0][1] = 1;
-    REP(i, L) REP(j, 1 << 7) REP(k, 1 << 8){
+        // 分母は普通に計算
+        mint denominator = 1;
+        REP(k, p) if (k != i) denominator *= mint(i - k);
+        mint denominator_inv = denominator.inv();
 
-        if (dp[i][j][k] == 0) continue;
-
-        if (i == L-1 && j == 1){
-            print(i, j, bitset<4>(k));
-        }
-        if (i == L-2 && j == 0){
-            print(i, j, bitset<4>(k));
-
-        }
-        REP(d, 2){
-            int is_valid = 0;
-            REP(n, N){
-                int sz = W[n].first - 1; // n番目の文字列が使えるのは、文字数-1の場所に切れ目があって、文字列が一致するとき
-                int w1 = W[n].second;
-                int w2 = ((((1 << sz) - 1) & j) << 1) | d;
-
-                if ( (k >> sz) & 1 && w1 == w2 ){
-                    is_valid = 1;
-                    break;
-                }
-            }
-
-            int nj = ((j << 1) | d) & ((1 << 7) - 1);
-            int nk = ((k << 1) | is_valid) & ((1 << 8) - 1);
-            dp[i+1][nj][nk] += dp[i][j][k];
+        // 分子 上で求めた(x-0)*(x-1)*...*(x-(p-1))からx-iを割る。割り算の筆算する。
+        mint coef = 0;
+        REP_REV(k, p){
+            coef = coef * i + numerator_all[k+1];
+            ans[k] += coef * denominator_inv;
         }
     }
 
-    mint ans = 0;
-    REP(j, 1 << 7) REP(k, 1 << 7) {
-        ans += dp[L][j][(k << 1) | 1];
-    }
-    print(ans);
-
+    REP(i, p-1) cout << ans[i] << " ";
+    cout << ans[p-1] << endl;
 
     return 0;
 }
