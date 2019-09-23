@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_b
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -27,6 +27,18 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    int A, B;
+    cin >> A >> B;
+
+    int ans = 0;
+    REP(i, 1000){
+        if ((A-1) * (i-1) + A >= B){
+            ans = i;
+            break;
+        }
+    }
+    print(ans);
 
 
     return 0;

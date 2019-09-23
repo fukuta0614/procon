@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_c
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -27,6 +27,23 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    int N;
+    cin >> N;
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
+
+    int ans = 0;
+    int tmp = 0;
+    REP(i, N-1){
+        if (A[i+1] <= A[i]) {
+            tmp++;
+            ans = max(ans, tmp);
+        } else {
+            tmp = 0;
+        }
+    }
+    print(ans);
 
 
     return 0;

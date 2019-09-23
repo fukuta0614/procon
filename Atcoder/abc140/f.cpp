@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_f
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +28,36 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    int n = 1 << N;
+    vector<int> S(n);
+    REP(i, n) cin >> S[i];
+
+    multiset<int> T(ALL(S));
+
+    multiset<int> gen;
+
+    auto last = prev(T.end());
+    gen.insert(*last);
+    T.erase(last);
+
+    REP(i, N){
+        auto tmp = gen;
+        for (auto gen_it = tmp.rbegin(); gen_it != tmp.rend(); gen_it++){
+            int s = *gen_it;
+            auto it = T.lower_bound(s);
+            if (it == T.begin()) {
+                print("No");
+                return 0;
+            }
+            it--;
+            gen.insert(*it);
+            T.erase(it);
+        }
+    }
+
+    print("Yes");
 
     return 0;
 }

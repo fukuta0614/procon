@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_a
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +28,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S, T;
+    cin >> S >> T;
+
+    int ans = 0;
+    REP(i, 3){
+        if (S[i] == T[i]) ans++;
+    }
+
+    print(ans);
 
     return 0;
 }

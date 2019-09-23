@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_c
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -27,6 +27,19 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    int N;
+    cin >> N;
+    vector<int> B(N);
+    REP(i, N-1) cin >> B[i];
+
+    ll ans = B[0];
+    REP(i,N-1){
+        ans += min(B[i], B[i+1]);
+    }
+    ans += B[N-2];
+    print(ans);
+
 
 
     return 0;

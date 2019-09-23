@@ -1,4 +1,4 @@
-// aribon3-4_f
+// aribon3-6_f
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +28,8 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
 
     return 0;
 }

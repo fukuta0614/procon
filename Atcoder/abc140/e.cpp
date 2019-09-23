@@ -1,4 +1,4 @@
-// aribon3-4_f
+// abc138_e
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +28,27 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<int> P(N);
+    REP(i, N) cin >> P[i];
+
+    int r = 0;
+    REP(l, N){ // しゃくとり法
+
+        while (r < N && sm + A[r] < K){
+            sm += A[r];
+            r++;
+        }
+
+        ans += r - l;
+
+        if (r == l){
+            r++;
+        } else {
+            sm -= A[l];
+        }
+    }
 
     return 0;
 }
