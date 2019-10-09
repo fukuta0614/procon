@@ -23,6 +23,7 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
@@ -30,25 +31,52 @@ int main() {
 
     int N;
     cin >> N;
-    vector<int> P(N);
-    REP(i, N) cin >> P[i];
-
-    int r = 0;
-    REP(l, N){ // しゃくとり法
-
-        while (r < N && sm + A[r] < K){
-            sm += A[r];
-            r++;
-        }
-
-        ans += r - l;
-
-        if (r == l){
-            r++;
-        } else {
-            sm -= A[l];
-        }
+    vector<pair<int, int>> P(N);
+    REP(i, N) {
+        cin >> P[i].first;
+        P[i].second = i;
     }
+    sort(ALL(P), greater<pair<int, int>>());
+
+    multiset<int> st{-1, -1, N, N};
+
+    ll ans = 0;
+    REP(i, N){
+
+        ll v = P[i].first;
+        ll idx = P[i].second;
+        auto it = st.lower_bound(idx);
+
+        ll l2, l1, r2, r1;
+
+        r1 = *it;
+        it++;
+        r2 = *it;
+        it--;
+        it--;
+        l1 = *it;
+        it--;
+        l2 = *it;
+
+        ans += v * ((l1 - l2) * (r1 - idx) + (r2 - r1) * (idx - l1));
+
+        st.insert(idx);
+    }
+
+    print(ans);
+
+//    N = 5;
+//    P = {5, 2, 1, 4, 3};
+//    print(P);
+//    int ans = 0;
+//    REP(i, N-1) REPN(j, i+1, N){
+//        auto x = P;
+//        sort(x.begin() + i, x.begin() + j+1);
+//        print(i, j, x, x[j-1]);
+//        ans += x[j-1];
+//    }
+//    print(ans);
+
 
     return 0;
 }

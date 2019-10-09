@@ -48,6 +48,7 @@ int main() {
     REP(i, Q) cin >> D[i];
     sort(ALL(D));
 
+    // 小さい方から出てくる
     auto comp = [](const Kouji& a, const Kouji& b) { return a.x > b.x; };
     priority_queue<Kouji, vector<Kouji>, decltype(comp)> pq(comp);
 

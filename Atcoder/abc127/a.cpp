@@ -28,8 +28,16 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int A, B;
+    cin >> A >> B;
+
+    if (A <= 5){
+        print(0);
+    } else if (A <= 12){
+        print(B/2);
+    } else {
+        print(B);
+    }
 
     return 0;
 }

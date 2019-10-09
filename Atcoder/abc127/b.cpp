@@ -28,8 +28,13 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int r, D, x;
+    cin >> r >> D >> x;
+
+    REP(i, 10){
+        x = r * x - D;
+        print(x);
+    }
 
     return 0;
 }

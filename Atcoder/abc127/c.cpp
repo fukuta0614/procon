@@ -28,8 +28,20 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int N, M;
+    cin >> N >> M;
+
+    int max_l = 0;
+    int min_r = N-1;
+    REP(i, M){
+        int l, r;
+        cin >> l >> r; l--; r--;
+        max_l = max(max_l, l);
+        min_r = min(min_r, r);
+    }
+
+    print(max(min_r - max_l + 1, 0));
+
 
     return 0;
 }

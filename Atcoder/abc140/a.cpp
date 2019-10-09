@@ -28,15 +28,10 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    string S, T;
-    cin >> S >> T;
+    int N;
+    cin >> N;
 
-    int ans = 0;
-    REP(i, 3){
-        if (S[i] == T[i]) ans++;
-    }
-
-    print(ans);
+    print(N*N*N);
 
     return 0;
 }

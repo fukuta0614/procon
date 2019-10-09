@@ -28,8 +28,30 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int N, M;
+    cin >> N >> M;
+    vector<ll> A(N);
+    REP(i, N) cin >> A[i];
+    vector<P> CB(M);
+    REP(j, M) cin >> CB[j].second >> CB[j].first;
+
+    sort(ALL(A));
+    sort(ALL(CB), greater<P>());
+
+    int k = 0;
+    REP(j, M){
+        int b = CB[j].second;
+        int c = CB[j].first;
+
+        REP(i, b){
+            if (A[k] > c) break;
+            A[k] = c;
+            k++;
+        }
+    }
+
+    ll ans = accumulate(ALL(A), 0ll);
+    print(ans);
 
     return 0;
 }

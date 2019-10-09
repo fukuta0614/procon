@@ -28,8 +28,30 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int N, K;
+    cin >> N >> K;
+
+    int c = (N-1) * (N-2) / 2;
+    if (K > c) {
+        print(-1);
+        return 0;
+    }
+
+    int M = N - 1 + c - K;
+    print(M);
+    REPN(i, 2, N+1){
+        print(1, i);
+    }
+    M -= N-1;
+
+    REPN(i, 2, N){
+        REPN(j, i+1, N+1){
+            if (M-- > 0){
+                print(i, j);
+            }
+        }
+    }
+
 
     return 0;
 }

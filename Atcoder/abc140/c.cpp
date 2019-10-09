@@ -30,11 +30,11 @@ int main() {
 
     int N;
     cin >> N;
-    vector<int> B(N);
+    vector<int> B(N-1);
     REP(i, N-1) cin >> B[i];
 
     ll ans = B[0];
-    REP(i,N-1){
+    REP(i,N-2){
         ans += min(B[i], B[i+1]);
     }
     ans += B[N-2];

@@ -23,7 +23,6 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-
 // ベクトル
 struct Point {
     constexpr static double eps = 1e-9;
@@ -153,30 +152,34 @@ int main() {
 
             vector<Point> dog_V(N);
             double min_t = numeric_limits<double>::max();
-            int min_did = 0;
+            int min_did = -1;
             REP(did, N) {
 
-                double r_2 = (dog_pos[did] - frisbee_pos[fid]).norm2();
-                double y_2 = calc_distance_between_point_and_line(frisbee_pos[fid], frisbee_pos[fid]+frisbee_V[fid], dog_pos[did]);
-                double x_2 = r_2 - y_2;
-                double x = sqrt(x_2);
+                Point rel_pos = dog_pos[did] - frisbee_pos[fid];
+                double p_2 = rel_pos.norm2();
+                double p_dot_vf = rel_pos.dot(frisbee_V[fid]);
 
                 double Vf_2 = frisbee_V[fid].norm2();
-                double Vf = sqrt(Vf_2);
                 double Vd_2 = dog_speed[did] * dog_speed[did];
 
                 double a = Vf_2 - Vd_2;
-                double b = - 2 * Vf * x;
-                double c = r_2;
+                double b = - 2 * p_dot_vf;
+                double c = p_2;
 
                 double t;
-                if (a == 0) {
+                if (abs(a) < Point::eps) {
                     t = - c / b;
                 } else {
-                    double D = sqrt(b * b - 4 * a * c);
-                    double t1 = (-b - D) / (2 * a);
-                    double t2 = (-b + D) / (2 * a);
-                    t = min(t1, t2) > Point::eps ? min(t1, t2) : max(t1, t2);
+                    double D = b * b - 4 * a * c;
+                    if (D < 0){
+                        t = numeric_limits<double>::max();
+                    } else {
+                        D = sqrt(D);
+                        double t1 = (-b - D) / (2 * a);
+                        double t2 = (-b + D) / (2 * a);
+                        if (t1 > t2) swap(t1, t2);
+                        t = t1 > Point::eps ? t1 : t2 > Point::eps ? t2 : numeric_limits<double>::max();
+                    }
                 }
 
                 if (t < min_t) {
@@ -186,6 +189,8 @@ int main() {
 
                 Point intersection = frisbee_pos[fid] + frisbee_V[fid] * t;
                 dog_V[did] = (intersection - dog_pos[did]) / t;
+                if (t == numeric_limits<double>::max()) dog_V[did] = Point(0, 0);
+
             }
 
             dog_score[min_did]++;

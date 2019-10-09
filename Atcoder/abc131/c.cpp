@@ -17,6 +17,7 @@ typedef pair<int, int> P;
 
 #define INF ((1 << 29)-1)
 #define MOD (1000000007)
+ll gcd(ll a,ll b){return b?gcd(b,a%b):a;}
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 template<class T> void print(const T& x){cout << x << endl;}
@@ -28,8 +29,13 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    ll A, B, C, D;
+    cin >> A >> B >> C >> D;
+
+    ll x = B - B / C - B / D + B / (C * D / gcd(C, D));
+    A--;
+    ll y = A - A / C - A / D + A / (C * D / gcd(C, D));
+    print(x - y);
 
     return 0;
 }

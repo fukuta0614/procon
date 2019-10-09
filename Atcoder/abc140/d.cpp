@@ -28,11 +28,17 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ll N;
-    cin >> N;
+    int N, K;
+    cin >> N >> K;
+    string S;
+    cin >> S;
 
-    ll ans = N * (N - 1) / 2;
+    int cnt = 0;
+    REP(i, N-1){
+        if (S[i] == S[i+1]) cnt++;
+    }
 
-    print(ans);
+    print(min(N-1, cnt + 2 * K));
+
     return 0;
 }

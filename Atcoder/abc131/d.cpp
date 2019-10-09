@@ -30,6 +30,20 @@ int main() {
 
     int N;
     cin >> N;
+    vector<P> AB(N);
+    REP(i, N) cin >> AB[i].first >> AB[i].second;
+
+    sort(ALL(AB), [](const P& lhs, const P& rhs){return lhs.second < rhs.second;});
+
+    int t = 0;
+    REP(i, N){
+        t += AB[i].first;
+        if (t > AB[i].second){
+            print("No");
+            return 0;
+        }
+    }
+    print("Yes");
 
     return 0;
 }

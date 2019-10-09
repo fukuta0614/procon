@@ -28,8 +28,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    string S;
+    cin >> S;
+    REP(i, S.size()-1){
+        if (S[i] == S[i+1]){
+            print("Bad");
+            return 0;
+        }
+    }
+    print("Good");
 
     return 0;
 }

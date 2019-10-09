@@ -28,14 +28,18 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int A, B;
-    cin >> A >> B;
+    int N;
+    cin >> N;
+    vector<int> A(N), B(N), C(N-1);
+    REP(i, N) {cin >> A[i]; A[i]--;}
+    REP(i, N) cin >> B[i];
+    REP(i, N-1) cin >> C[i];
 
     int ans = 0;
-    REP(i, 1000){
-        if ((A-1) * (i-1) + A >= B){
-            ans = i;
-            break;
+    REP(i, N){
+        ans += B[A[i]];
+        if (i > 0 && A[i-1] + 1 == A[i]){
+            ans += C[A[i-1]];
         }
     }
     print(ans);
