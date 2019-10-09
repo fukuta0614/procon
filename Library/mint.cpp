@@ -41,8 +41,8 @@ struct mint {
 // 階乗
 struct Factorial {
     vector<mint> values;
-    Factorial(int n) { values[0] = 1; for (int i = 1; i <= n; ++i) { values[i] = i * values[i-1]; }}
-    mint operator()(int n){ return n >= 0 ? values[n] : 0;}
+    explicit Factorial(int n): values(n+1, 0) { values[0] = 1; for (int i = 1; i <= n; ++i) { values[i] = values[i-1] * i;}}
+    mint operator()(int n){ return n >= 0 ? values[n] : mint(0);}
 };
 
 // 組み合わせ
@@ -50,4 +50,4 @@ mint nCk(int n, int k, Factorial& f){ return f(n) / (f(n-k) * f(k));}
 
 mint nPk(int n, int k, Factorial& f){ return f(n) / f(n-k);}
 
-mint nHk(int n, int k, Factorial& f){ return nCk(n+k-1, k-1);}
+mint nHk(int n, int k, Factorial& f){ return nCk(n+k-1, k-1, f);}

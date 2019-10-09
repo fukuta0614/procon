@@ -2,13 +2,13 @@
 // Created by 福田圭佑 on 2019/08/05.
 //
 
-
 struct UnionFind {
     vector<int> par; // par[i]:iの親の番号　(例) par[3] = 2 : 3の親が2
     vector<int> rank;
+    vector<int> size; // size[i]: iが親なら連結成分の数
 
-    UnionFind(int N) : par(N), rank(N) { //最初は全てが根であるとして初期化
-        for(int i = 0; i < N; i++) {par[i] = i; rank[i] = 0;}
+    UnionFind(int N) : par(N), rank(N), size(N) { //最初は全てが根であるとして初期化
+        for(int i = 0; i < N; i++) {par[i] = i; rank[i] = 0; size[i] = 1;}
     }
 
     int find(int x) { // データxが属する木の根を再帰で得る：find(x) = {xの木の根}
@@ -21,17 +21,26 @@ struct UnionFind {
         int ry = find(y); //yの根をry
         if (rx == ry) return; //xとyの根が同じ(=同じ木にある)時はそのまま
 
-        if(rank[rx] < rank[ry]) { // root が rx の木の方が root が ry の木よりも低い
-            par[rx] = ry; // root ry に rx の木をつなぐ
-        } else {
-            par[ry] = rx; // root rx に ry の木をつなぐ
-            if(rank[rx] == rank[ry]) ++rank[rx]; // 同じ高さだったならばまとめたことによって高さ +1
-        }
+        // rank[rx] >= rank[ry] となるように rx と ry を swap
+        if(rank[rx] < rank[ry]) swap(rx, ry);
+
+        // 同じ高さだったならばまとめたことによって高さ +1
+        if(rank[rx] == rank[ry]) ++rank[rx];
+
+        par[ry] = rx; // root rx に ry の木をつなぐ
+        size[rx] += size[ry];
+        size[ry] = 0;
+
     }
 
     bool same(int x, int y) { // 2つのデータx, yが属する木が同じならtrueを返す
         int rx = find(x);
         int ry = find(y);
         return rx == ry;
+    }
+
+    int get_size(int x){
+        int rx = find(x);
+        return size[rx];
     }
 };

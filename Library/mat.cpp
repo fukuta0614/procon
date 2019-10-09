@@ -72,9 +72,9 @@ int gauss_jordan(Mat<T>& A, bool is_extended=true){
 
         // 対象行以外を0にする
         REP(row, A.m) if (row != rank && A[row][col]){
-                auto coeff = A[row][col];
-                REP(c, A.n) A[row][c] -= coeff * A[rank][c];
-            }
+            auto coeff = A[row][col];
+            REP(c, A.n) A[row][c] -= coeff * A[rank][c];
+        }
         ++rank;
     }
     return rank;
