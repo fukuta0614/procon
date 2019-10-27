@@ -1,0 +1,12 @@
+
+
+ビンパッキング
+https://qiita.com/SaitoTsutomu/items/3a970e071768bbe96005
+http://inarizuuuushi.hatenablog.com/entry/2017/11/12/083421
+
+ビンパッキング　系列生成法
+http://www.orsj.or.jp/archive2/or57-04/or57_4_198.pdf
+
+anaconda でpyinstaller
+https://qiita.com/napinoco/items/068ce8ef6ef4309966b1
+
