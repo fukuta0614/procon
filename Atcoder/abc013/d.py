@@ -8,7 +8,10 @@ for i in range(M):
     idx = A[i]
     amida[idx], amida[idx + 1] = amida[idx + 1], amida[idx]
 
+print(amida)
 amida = sorted(range(len(amida)), key=amida.__getitem__)
+print(amida)
+
 q = list(range(N))
 block = []
 while len(q) > 0:
@@ -24,6 +27,8 @@ while len(q) > 0:
             q.pop(idx)
             tmp.append(x)
     block.append(tmp)
+
+print(block)
 
 ans = [0] * N
 for b in block:

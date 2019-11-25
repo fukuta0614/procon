@@ -60,6 +60,7 @@ vector<ll> get_divisors(ll n){
             res.emplace_back(n / i);
         }
     }
+    if (i * i == n) res.emplace_back(i);
     sort(ALL(res));
     return res;
 }
