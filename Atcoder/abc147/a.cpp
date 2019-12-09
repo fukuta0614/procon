@@ -1,4 +1,4 @@
-// gyoumu_b
+// abc147_a
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,41 +28,15 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+    int A, B, C;
+    cin >> A >> B >> C;
 
-    int N = pow(3, 14);
-    vector<vector<int>> init(3);
-    init[0].emplace_back(1);
-    init[1].emplace_back(2);
-
-    REP(i, N){
-
-        int n = i;
-        auto tmp = init;
-        REP(j, 14){
-            tmp[n%3].emplace_back(j+2);
-            n /= 3;
-        }
-
-        bool flag = true;
-        REP(j, 3){
-            for (auto x: tmp[j]) {
-                for (auto y: tmp[j]){
-                    if (std::find(ALL(tmp[j]), x + y) != tmp[j].end()){
-                        flag = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (i % 100000 == 0){
-            print(i);
-        }
-        if (flag){
-            print(tmp);
-            return 0;
-        }
+    if (A + B + C >= 22){
+        print("bust");
+    } else {
+        print("win");
     }
+
 
     return 0;
 }

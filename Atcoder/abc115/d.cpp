@@ -1,4 +1,4 @@
-// gyoumu_b
+// abc115_d
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -24,45 +24,50 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N = pow(3, 14);
-    vector<vector<int>> init(3);
-    init[0].emplace_back(1);
-    init[1].emplace_back(2);
+    ll N, X;
+    cin >> N >> X;
 
-    REP(i, N){
+    vector<ll> B(N+1), P(N+1);
 
-        int n = i;
-        auto tmp = init;
-        REP(j, 14){
-            tmp[n%3].emplace_back(j+2);
-            n /= 3;
-        }
-
-        bool flag = true;
-        REP(j, 3){
-            for (auto x: tmp[j]) {
-                for (auto y: tmp[j]){
-                    if (std::find(ALL(tmp[j]), x + y) != tmp[j].end()){
-                        flag = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        if (i % 100000 == 0){
-            print(i);
-        }
-        if (flag){
-            print(tmp);
-            return 0;
-        }
+    B[0] = 1;
+    P[0] = 1;
+    REP(i, N) {
+        B[i + 1] = 2 * B[i] + 3;
+        P[i + 1] = 2 * P[i] + 1;
     }
+
+    int i = N;
+    ll ans = 0;
+    while (true){
+        if (X == 1){
+            if (i == 0) ans++;
+            ans += 0;
+            break;
+        } else if (X <= B[i-1] + 1){
+            X -= 1;
+            ans += 0;
+        } else if (X == B[i-1] + 2){
+            ans += P[i-1] + 1;
+            break;
+        } else if (X <= 2 * B[i-1] + 2){
+            X -= B[i-1] + 2;
+            ans += P[i-1] + 1;
+        } else {
+            ans += 2 * P[i-1] + 1;
+            break;
+        }
+        i--;
+    }
+
+    print(ans);
+
 
     return 0;
 }

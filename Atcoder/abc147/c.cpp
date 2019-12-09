@@ -1,4 +1,4 @@
-// gyoumu_b
+// abc147_c
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -29,40 +29,40 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N = pow(3, 14);
-    vector<vector<int>> init(3);
-    init[0].emplace_back(1);
-    init[1].emplace_back(2);
+    int N;
+    cin >> N;
 
+    vector<int> A(N);
+    vector<vector<P>> T(N);
     REP(i, N){
-
-        int n = i;
-        auto tmp = init;
-        REP(j, 14){
-            tmp[n%3].emplace_back(j+2);
-            n /= 3;
+        cin >> A[i];
+        T[i].resize(A[i]);
+        REP(j, A[i]){
+            cin >> T[i][j].first >>  T[i][j].second;
+            T[i][j].first--;
         }
+    }
 
-        bool flag = true;
-        REP(j, 3){
-            for (auto x: tmp[j]) {
-                for (auto y: tmp[j]){
-                    if (std::find(ALL(tmp[j]), x + y) != tmp[j].end()){
-                        flag = false;
-                        break;
-                    }
+    int ans = 0;
+    REP(p, 1 << N){
+
+        int tmp_cnt = 0;
+        bool is_valid = true;
+        REP(i, N){
+            if ((p >> i) & 1){
+                tmp_cnt++;
+                REP(j, A[i]){
+                    int k = T[i][j].first;
+                    is_valid &= ((p >> k) & 1) == T[i][j].second;
                 }
             }
         }
-
-        if (i % 100000 == 0){
-            print(i);
-        }
-        if (flag){
-            print(tmp);
-            return 0;
+        if (is_valid){
+            ans = max(ans, tmp_cnt);
         }
     }
+
+    print(ans);
 
     return 0;
 }
