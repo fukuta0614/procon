@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+add_definitions(-ftrapv)
+add_definitions(-D_GLIBCXX_DEBUG)
 project(abc104)
-#add_definitions(-DLOCAL)
-#set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 
 add_executable(abc104_a a.cpp)
 add_executable(abc104_b b.cpp)

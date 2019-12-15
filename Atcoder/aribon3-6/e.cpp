@@ -1,4 +1,4 @@
-// aribon3-6_e
+// aribon3-6_e AOJ 1039 Frisbee Dogs
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"

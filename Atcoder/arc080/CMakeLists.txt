@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+#add_definitions(-ftrapv)
+#add_definitions(-D_GLIBCXX_DEBUG)
+project(arc080)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+
+add_executable(arc080_a a.cpp)
+add_executable(arc080_b b.cpp)
+add_executable(arc080_c c.cpp)
+add_executable(arc080_d d.cpp)
+add_executable(arc080_e e.cpp)
+add_executable(arc080_f f.cpp)

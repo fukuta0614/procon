@@ -1,4 +1,4 @@
-// aribon3-6_f
+// aribon3-6_f AOJ 2276 ボ～ル
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
