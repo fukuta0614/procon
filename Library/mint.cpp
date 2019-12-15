@@ -27,6 +27,7 @@ struct mint {
     operator bool() const {return x>0;}
 
     mint pow(ll t) const {mint r=1,a=*this; do{if(t&1)r*=a;a*=a;}while(t>>=1);return r;}
+    mint pow(mint t) const {mint r=1,a=*this; do{if(t.x&1)r*=a;a*=a;}while(t.x>>=1);return r;}
     mint inv() const { return pow(mod-2); }
     mint& operator/=(const mint& a) { return (*this) *= a.inv(); }
     mint& operator/=(const int& a) { return (*this) *= mint(a).inv(); }
