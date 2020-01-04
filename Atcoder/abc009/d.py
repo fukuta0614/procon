@@ -59,7 +59,7 @@ else:
                     for k in range(K):
                         C_tmp[i * K + j] ^= C_matrix[i * K + k] & C_matrix[k * K + j]
 
-            C_matrix = C_tmp[:]
+            C_matrix = C_tmp
 
         if int(flag):
             tmp = [0] * K

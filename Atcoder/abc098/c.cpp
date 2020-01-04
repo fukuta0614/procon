@@ -30,6 +30,21 @@ int main() {
 
     int N;
     cin >> N;
+    string S;
+    cin >> S;
+
+    vector<int> L(N), R(N);
+    REPN(i, 1, N){
+        L[i] = L[i-1] + (S[i-1] == 'W' ? 1 : 0);
+    }
+    REP_REV(i, N-1){
+        R[i] = R[i+1] + (S[i+1] == 'E' ? 1 : 0);
+    }
+    int ans = INF;
+    REP(i, N){
+        ans = min(ans, L[i] + R[i]);
+    }
+    print(ans);
 
     return 0;
 }

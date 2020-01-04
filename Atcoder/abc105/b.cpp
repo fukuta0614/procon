@@ -29,6 +29,19 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N; cin >> N;
+
+    REP(i, 30){
+        int r = N - 4 * i;
+        if (r < 0) {
+            print("No");
+            break;
+        }
+        if (r % 7 == 0){
+            print("Yes");
+            break;
+        }
+    }
 
     return 0;
 }

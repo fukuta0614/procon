@@ -1,9 +1,14 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
-
 N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+S = input()
+
+num = 0
+ans = 0
+for s in S:
+    if s == 'I':
+        num += 1
+    else:
+        num -= 1
+    ans = max(ans, num)
+
+print(ans)

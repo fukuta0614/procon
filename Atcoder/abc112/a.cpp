@@ -29,6 +29,16 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+
+    if (N == 1){
+        print("Hello World");
+    } else {
+        int a, b;
+        cin >> a >> b;
+        print(a + b);
+    }
 
     return 0;
 }

@@ -1,4 +1,5 @@
 // aribon4-4_b
+// CODE FESTIVAL 2016 Tournament Round 3 A ストラックアウト
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +29,48 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    int N, M, K;
+    cin >> N >> M >> K;
+    vector<ll> A(N);
+    REP(i, N) cin >> A[i];
+
+    vector<vector<ll>> dp(K+1, vector<ll>(N, -1));
+    dp[0].assign(N, 0);
+
+    vector<deque<ll>> deqs(K+1);
+    deqs[0].emplace_back(0);
+
+    REP(i, N){
+
+        REPN_REV(k, 1, K+1) {
+
+            if (deqs[k-1].empty()) continue;
+
+            // スライド最大値
+            dp[k][i] = dp[k-1][deqs[k-1].front()] + k * A[i];
+
+            // deque更新
+            while (not deqs[k].empty() && dp[k][deqs[k].back()] <= dp[k][i]){
+                deqs[k].pop_back();
+            }
+            deqs[k].emplace_back(i);
+
+            // 先頭からpop
+            if (deqs[k].front() == i - M){
+                deqs[k].pop_front();
+            }
+        }
+
+    }
+
+//    REP(k, K+1) { print(k, dp[k]); }
+
+    ll ans = 0;
+    REP(i, N){
+        ans = max(ans, dp[K][i]);
+    }
+    print(ans);
 
 
     return 0;

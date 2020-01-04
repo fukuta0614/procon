@@ -17,6 +17,7 @@ typedef pair<int, int> P;
 
 #define INF ((1 << 29)-1)
 #define MOD (1000000007)
+#define CHAR2INT(c) (c - '0')
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 #define print_line(vec, n) {for(int i=0;i<(n-1);i++) cout << (vec)[i] << " "; cout << (vec)[(n)-1] << endl;}
@@ -29,6 +30,30 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+
+    int ans = 0;
+    REPN(d, 3, 10){
+        int p = pow(3, d);
+
+        string s = "357";
+        REP(i, p){
+            string tmp;
+            int pp = i;
+            REP(k, d){
+                tmp += s[pp % 3];
+                pp /= 3;
+            }
+            int n = stoi(tmp);
+
+            if (count(ALL(tmp), '3') > 0 && count(ALL(tmp), '5') > 0 && count(ALL(tmp), '7') > 0 && n <= N){
+                ans++;
+            }
+        }
+    }
+
+    print(ans);
 
     return 0;
 }

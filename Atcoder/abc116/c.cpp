@@ -29,6 +29,34 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<int> H(N);
+    REP(i, N) cin >> H[i];
+
+    int ans = 0;
+    REP(i, 101){
+        bool update = false;
+        bool zero = true;
+        REP(j, N){
+            if (H[j] > 0){
+                if (zero) ans++;
+                H[j]--;
+                update = true;
+                zero = false;
+            } else {
+                zero = true;
+            }
+        }
+
+        if (not update){
+            print(ans);
+            return 0;
+        }
+    }
+
+    print(ans);
+
 
     return 0;
 }

@@ -29,6 +29,25 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, T;
+    cin >> N >> T;
+
+    int ans = INF;
+    REP(i, N){
+        int c, t;
+        cin >> c >> t;
+
+        if (t <= T){
+            ans = min(ans, c);
+        }
+    }
+
+    if (ans == INF) {
+        print("TLE");
+    } else {
+        print(ans);
+    }
+
 
     return 0;
 }

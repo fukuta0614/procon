@@ -1,9 +1,7 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+N, L = [int(_) for _ in input().split()]
+T = [input() for i in range(N)]
+
+ans = ''.join(sorted(T))
+print(ans)

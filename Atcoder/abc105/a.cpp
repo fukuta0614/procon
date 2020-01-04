@@ -29,6 +29,14 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, K;
+    cin >> N >> K;
+
+    if (N % K ==  0){
+        print(0);
+    } else {
+        print(1);
+    }
 
     return 0;
 }

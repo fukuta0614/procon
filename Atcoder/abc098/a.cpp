@@ -28,8 +28,13 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N;
-    cin >> N;
+    int A, B;
+    cin >> A >> B;
+
+    int ans = max(A + B, A - B);
+    ans = max(ans, A * B);
+
+    print(ans);
 
     return 0;
 }

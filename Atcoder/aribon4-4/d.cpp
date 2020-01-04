@@ -29,6 +29,51 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<ll> X(N);
+    REP(i, N) cin >> X[i];
+
+    ll L;
+    cin >> L;
+
+    int tmp = 0;
+    int log_n = (int)log2(N) + 1;
+    vector<vector<int>> next(log_n+1, vector<int>(N+1, 0));
+    REP(i, N){
+        while (tmp < N-1 && X[tmp+1] - X[i] <= L) tmp++;
+        next[0][i] = tmp;
+    }
+    next[0][N-1] = N;
+    next[0][N] = N;
+
+    REP(k, log_n){
+        REP(i, N+1){
+            next[k+1][i] = next[k][next[k][i]];
+        }
+    }
+
+//    REP(k, log_n) print(1 << k, next[k]);
+
+    int Q;
+    cin >> Q;
+    REP(i, Q){
+        int a, b;
+        cin >> a >> b; a--; b--;
+        if (a > b) swap(a, b);
+
+        int j = a;
+        int ans = 0;
+        REP_REV(k, log_n+1){
+            if (next[k][j] <= b){
+                j = next[k][j];
+                ans += 1 << k;
+            }
+        }
+        if (j < b) ans++;
+        print(ans);
+    }
+
 
     return 0;
 }

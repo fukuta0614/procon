@@ -1,9 +1,5 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+A, B = [int(_) for _ in input().split()]
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+ans = (B + A - 1) // A
+print(ans)

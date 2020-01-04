@@ -29,6 +29,35 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+
+    vector<int> x(N), y(N), h(N);
+    REP(i, N) cin >> x[i] >> y[i] >> h[i];
+
+    REP(cx, 101) REP(cy, 101){
+
+        int H=0;
+        REP(i, N){
+            if (h[i] != 0){
+                H = abs(cx-x[i]) + abs(cy-y[i]) + h[i];
+                break;
+            }
+        }
+
+        bool is_valid = true;
+        REP(i, N){
+            int tmp = max(H - abs(cx-x[i]) - abs(cy-y[i]), 0);
+            if (tmp != h[i]){
+                is_valid = false;
+                break;
+            }
+        }
+        if (is_valid){
+            print(cx, cy, H);
+            return 0;
+        }
+    }
 
     return 0;
 }

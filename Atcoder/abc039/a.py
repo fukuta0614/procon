@@ -1,9 +1,4 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
-
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+A, B, C = [int(_) for _ in input().split()]
+ans = 2 * (A*B + B*C + C*A)
+print(ans)

@@ -29,6 +29,24 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int s;
+    cin >> s;
+
+    set<int> st{s};
+    int a = s;
+    REP(i, 1000001){
+        if (a & 1){
+            a = 3 * a + 1;
+        } else {
+            a = a / 2;
+        }
+
+        if (st.find(a) != st.end()){
+            print(i+2);
+            return 0;
+        }
+        st.insert(a);
+    }
 
     return 0;
 }

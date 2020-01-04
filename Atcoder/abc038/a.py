@@ -1,9 +1,7 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+S = input()
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+if S[-1] == "T":
+    print("YES")
+else:
+    print("NO")

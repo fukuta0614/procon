@@ -29,6 +29,11 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    int ans = (a * b) / 2;
+    print(ans);
 
     return 0;
 }

@@ -36,6 +36,7 @@ int main() {
         train_map[l][r] += 1;
     }
 
+    // 二次元累積和
     REPN(i, 1, N + 1) {
         REPN(j, 1, N + 1) {
             cumsum[i][j] = train_map[i][j] + cumsum[i][j - 1] + cumsum[i - 1][j] - cumsum[i - 1][j - 1];

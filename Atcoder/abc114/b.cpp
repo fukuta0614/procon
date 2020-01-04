@@ -29,6 +29,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin >> S;
+
+    int ans = INF;
+    REP(i, S.size()-2){
+        int n = stoi(S.substr(i, 3));
+        ans = min(ans, abs(n - 753));
+    }
+    print(ans);
 
     return 0;
 }

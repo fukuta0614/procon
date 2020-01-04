@@ -1,9 +1,10 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
-
 N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+K = int(input())
+X = int(input())
+Y = int(input())
+
+if N <= K:
+    print(N * X)
+else:
+    print(K * X + (N-K) * Y)

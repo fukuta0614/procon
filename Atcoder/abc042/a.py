@@ -1,9 +1,8 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+T = [int(_) for _ in input().split()]
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+x = sorted(T)
+if x[0] == 5 and x[1] == 5 and x[2] == 7:
+    print("YES")
+else:
+    print("NO")

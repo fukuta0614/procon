@@ -6,6 +6,7 @@ project(aribon4-4)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
 
 add_executable(aribon4-4_a a.cpp)
+add_executable(aribon4-4_a2 a2.cpp)
 add_executable(aribon4-4_b b.cpp)
 add_executable(aribon4-4_c c.cpp)
 add_executable(aribon4-4_d d.cpp)

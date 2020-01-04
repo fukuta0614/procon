@@ -1,9 +1,8 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+H1, W1 = [int(_) for _ in input().split()]
+H2, W2 = [int(_) for _ in input().split()]
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+if H1 == H2 or H1 == W2 or W1 == H2 or H1 == W2:
+    print("YES")
+else:
+    print("NO")

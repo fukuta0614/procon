@@ -1,4 +1,5 @@
 // aribon3-2-8_c
+// JOI 2008 予選 E シャッフル
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"

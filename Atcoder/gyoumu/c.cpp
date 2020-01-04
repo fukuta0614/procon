@@ -29,6 +29,7 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    (m+1)*binomial(n+1, (n-m)/2)/(n+1);
 
     return 0;
 }

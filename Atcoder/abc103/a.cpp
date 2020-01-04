@@ -1,26 +1,42 @@
-// abc103_a
+// abc149_a
 #include <bits/stdc++.h>
+#ifdef LOCAL
+#include "../cxx-prettyprint/prettyprint.hpp"
+#endif
 using namespace std;
 
 typedef long long ll;
 typedef unsigned long long ull;
+typedef pair<int, int> P;
+
 #define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
+#define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
+#define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
+#define REPN_REV(i, m, n) for (int (i) = (int)(n) - 1 ; (i) >= m ; --(i))
+#define ALL(x) x.begin(), x.end()
+
+#define INF ((1 << 29)-1)
+#define MOD (1000000007)
+
+#define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
+#define print_line(vec, n) {for(int i=0;i<(n-1);i++) cout << (vec)[i] << " "; cout << (vec)[(n)-1] << endl;}
+template<class T> void print(const T& x){cout << x << endl;}
+template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
+struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
 int main() {
 #ifdef LOCAL
-    std::ifstream in("../arg.txt");
-    std::cin.rdbuf(in.rdbuf());
+    ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ull X,Y;
-    cin >> X >> Y;
+    int a, b, c;
+    cin >> a >> b >> c;
 
-    int n=0;
-    ull tmp = X;
-    for (n=0;tmp<=Y;tmp*=2, n++){}
-    cout << n << endl;
+    int mx = max(max(a, b), c);
+    int mn = min(min(a, b), c);
+
+    int ans = mx - mn;
+    print(ans);
 
     return 0;
 }
-
-

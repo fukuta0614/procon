@@ -30,6 +30,23 @@ int main() {
 
     int N;
     cin >> N;
+    string S;
+    cin >> S;
+
+    int ans = 0;
+    REPN(i, 1, N){
+        string a = S.substr(0, i);
+        string b = S.substr(i, N-i);
+
+        set<int> st;
+        REP(k, i){
+            if (b.find(a[k]) != string::npos){
+                st.insert(a[k]);
+            }
+        }
+        ans = max(ans, (int)st.size());
+    }
+    print(ans);
 
     return 0;
 }
