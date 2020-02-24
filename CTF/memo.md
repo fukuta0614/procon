@@ -5,43 +5,52 @@
 
 - sqlite3
 
+- burpsuite
+    - postとかを見れる？
+    
+- john the ripper
 
+- python-stepic
+
+- The Sleuth Kit (ファイルシステム解析？）
+
+- コマンド系
+    - xdd
+    - objdump
+    - hexdump
+    - strings
+    - readelf
+    - binwalk
+    - steghide
+    - exiftool
+    - dd
+    - 
+    
+## 全般
+
+- タイトルはだいぶ意味がある
+- よくわからない文字列出てきたら、とりあえずぐぐると、なにかのフォーマットだったりする
+ 
 ## 参考
-- KSNCTF
-    - http://gky360.hatenablog.com/entry/2019/04/16/094409
-    - http://gky360.hatenablog.com/entry/2019/04/25/230015
-    -
+- ~を渡されたら試して見る系
+    - https://qiita.com/knqyf263/items/6ebf06e27be7c48aab2e#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%8C%E6%B8%A1%E3%81%95%E3%82%8C%E3%81%9F%E5%A0%B4%E5%90%88
+- バイナリファイル解析系
+    - https://qiita.com/elu697/items/8b4b67fea20bd8733730
 
-## SQL
+
+- web IDE
+    - https://uxmilk.jp/15406
+        - まとめがある。
+
+    
+## web系
+
+- titleにヒントがあるかも？
+
+
+## SQL``
 
 - 一般
     - sqlite3コマンド
         - .tables でテーブルの一覧
         - .showでdbの概要
-
-
-- ksnctf 32 simple auth
-    - 参考
-        - https://qiita.com/CTFman/items/9224b86a5cbf757ed85e
-    - phpのstrcasecmpには脆弱性があるらしい。
-    - strcasecmp($_POST['password'], $password) == 0)
-    - postクエリのpasswordが、配列だと問答無用で返り値が0になるらしい。
-    - <input type="password" name="password[]"> nameの中身に[]をつけると、配列として送信できるらしい。
-    - htmlをこんな漢字にいじって、適当に0とか入れて送信すると通った。
-
-
-- ksnctf 35 simple auth 2
-    $db = new PDO('sqlite:database.db');
-    $s = $db->prepare('SELECT * FROM user WHERE id=? AND password=?');
-    $s->execute(array($_POST['id'], $_POST['password']));
-
-    - id=? というのは、あとからparameterをもらって実行できるようにするための文法らしい。
-    - id=' + s + ' みたいにやると、悪意あるユーザに変なsql実行されちゃうらしい。
-    - この問題では、database.dbの場所がまずくて、普通に相対パスでこのphpと同じ場所にdatabase.dbがあるのでダウンロードできる。
-    - file コマンドで見ると sqlite3 とわかるので、userを見るとroot, flag~とパスワードが見える
-
-## web
-
-- ksnctf 08 basic is secure
-    - basic認証サイトにアクセスしたときのpcapログ
-    - 色々見てたらpasswordがあった。それがflagだった。
