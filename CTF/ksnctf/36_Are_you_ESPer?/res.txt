@@ -1,0 +1,901 @@
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too large
+
+Level 2/20, Challenge 3/8
+? Too large
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too large
+
+Level 2/20, Challenge 6/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Correct!
+
+Level 4/20, Challenge 1/4
+? Too large
+
+Level 4/20, Challenge 2/4
+? Too large
+
+Level 4/20, Challenge 3/4
+? Too large
+
+Level 4/20, Challenge 4/4
+? Too large
+
+Bye
+8160
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too large
+
+Level 2/20, Challenge 5/8
+? Too large
+
+Level 2/20, Challenge 6/8
+? Too large
+
+Level 2/20, Challenge 7/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too large
+
+Level 3/20, Challenge 2/6
+? Too large
+
+Level 3/20, Challenge 3/6
+? Too large
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too large
+
+Level 3/20, Challenge 6/6
+? Too small
+
+Bye
+8161
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too small
+
+Level 1/20, Challenge 7/10
+? Too large
+
+Level 1/20, Challenge 8/10
+? Too large
+
+Level 1/20, Challenge 9/10
+? Too small
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8162
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too large
+
+Level 2/20, Challenge 3/8
+? Too large
+
+Level 2/20, Challenge 4/8
+? Too large
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Too large
+
+Level 2/20, Challenge 7/8
+? Too large
+
+Level 2/20, Challenge 8/8
+? Too large
+
+Bye
+8163
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Too small
+
+Level 2/20, Challenge 7/8
+? Too small
+
+Level 2/20, Challenge 8/8
+? Too small
+
+Bye
+8164
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too large
+
+Level 1/20, Challenge 7/10
+? Too small
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too large
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8165
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too small
+
+Level 3/20, Challenge 2/6
+? Too small
+
+Level 3/20, Challenge 3/6
+? Too small
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too small
+
+Level 3/20, Challenge 6/6
+? Too small
+
+Bye
+8166
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too small
+
+Level 1/20, Challenge 7/10
+? Too small
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too small
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8167
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too large
+
+Level 2/20, Challenge 5/8
+? Too large
+
+Level 2/20, Challenge 6/8
+? Too small
+
+Level 2/20, Challenge 7/8
+? Too small
+
+Level 2/20, Challenge 8/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Correct!
+
+Level 4/20, Challenge 1/4
+? Too large
+
+Level 4/20, Challenge 2/4
+? Too large
+
+Level 4/20, Challenge 3/4
+? Too large
+
+Level 4/20, Challenge 4/4
+? Too large
+
+Bye
+8168
+Level 1/20, Challenge 1/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Correct!
+
+Level 4/20, Challenge 1/4
+? Correct!
+
+Level 5/20, Challenge 1/2
+? Correct!
+
+Level 6/20, Challenge 1/1
+? Correct!
+
+Level 7/20, Challenge 1/1
+? Correct!
+
+Level 8/20, Challenge 1/1
+? Correct!
+
+Level 9/20, Challenge 1/1
+? Correct!
+
+Level 10/20, Challenge 1/1
+? Correct!
+
+Level 11/20, Challenge 1/1
+? Correct!
+
+Level 12/20, Challenge 1/1
+? Correct!
+
+Level 13/20, Challenge 1/1
+? Correct!
+
+Level 14/20, Challenge 1/1
+? Correct!
+
+Level 15/20, Challenge 1/1
+? Correct!
+
+Level 16/20, Challenge 1/1
+? Correct!
+
+Level 17/20, Challenge 1/1
+? Correct!
+
+Level 18/20, Challenge 1/1
+? Correct!
+
+Level 19/20, Challenge 1/1
+? Correct!
+
+Level 20/20, Challenge 1/1
+? Correct!
+
+Congratulations!
+FLAG_Xmh3xVEXQ7zwTwkT
+8169
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too small
+
+Level 1/20, Challenge 7/10
+? Too small
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too small
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8170
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too small
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too small
+
+Level 1/20, Challenge 7/10
+? Too small
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too small
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8171
+Level 1/20, Challenge 1/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too large
+
+Level 2/20, Challenge 4/8
+? Too large
+
+Level 2/20, Challenge 5/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too small
+
+Level 3/20, Challenge 2/6
+? Too small
+
+Level 3/20, Challenge 3/6
+? Too small
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too small
+
+Level 3/20, Challenge 6/6
+? Too small
+
+Bye
+8172
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Too large
+
+Level 1/20, Challenge 6/10
+? Too large
+
+Level 1/20, Challenge 7/10
+? Too large
+
+Level 1/20, Challenge 8/10
+? Too large
+
+Level 1/20, Challenge 9/10
+? Too large
+
+Level 1/20, Challenge 10/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too large
+
+Level 2/20, Challenge 6/8
+? Too small
+
+Level 2/20, Challenge 7/8
+? Too small
+
+Level 2/20, Challenge 8/8
+? Too large
+
+Bye
+8173
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Too small
+
+Level 2/20, Challenge 7/8
+? Too large
+
+Level 2/20, Challenge 8/8
+? Too large
+
+Bye
+8174
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too small
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Too large
+
+Level 1/20, Challenge 6/10
+? Too large
+
+Level 1/20, Challenge 7/10
+? Too large
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too large
+
+Level 1/20, Challenge 10/10
+? Too small
+
+Bye
+8175
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Too small
+
+Level 1/20, Challenge 6/10
+? Too large
+
+Level 1/20, Challenge 7/10
+? Too small
+
+Level 1/20, Challenge 8/10
+? Too small
+
+Level 1/20, Challenge 9/10
+? Too large
+
+Level 1/20, Challenge 10/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too small
+
+Level 3/20, Challenge 2/6
+? Too small
+
+Level 3/20, Challenge 3/6
+? Too small
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too small
+
+Level 3/20, Challenge 6/6
+? Too small
+
+Bye
+8176
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Too large
+
+Level 1/20, Challenge 5/10
+? Too large
+
+Level 1/20, Challenge 6/10
+? Too large
+
+Level 1/20, Challenge 7/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too large
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too large
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Too large
+
+Level 2/20, Challenge 7/8
+? Too small
+
+Level 2/20, Challenge 8/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too small
+
+Level 3/20, Challenge 2/6
+? Too small
+
+Level 3/20, Challenge 3/6
+? Too small
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too small
+
+Level 3/20, Challenge 6/6
+? Too small
+
+Bye
+8177
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Too small
+
+Level 1/20, Challenge 3/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too small
+
+Level 3/20, Challenge 2/6
+? Too small
+
+Level 3/20, Challenge 3/6
+? Too small
+
+Level 3/20, Challenge 4/6
+? Too small
+
+Level 3/20, Challenge 5/6
+? Too small
+
+Level 3/20, Challenge 6/6
+? Correct!
+
+Level 4/20, Challenge 1/4
+? Too large
+
+Level 4/20, Challenge 2/4
+? Too large
+
+Level 4/20, Challenge 3/4
+? Too large
+
+Level 4/20, Challenge 4/4
+? Too large
+
+Bye
+8178
+Level 1/20, Challenge 1/10
+? Too large
+
+Level 1/20, Challenge 2/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too large
+
+Level 2/20, Challenge 3/8
+? Too large
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Correct!
+
+Level 3/20, Challenge 1/6
+? Too large
+
+Level 3/20, Challenge 2/6
+? Too large
+
+Level 3/20, Challenge 3/6
+? Too large
+
+Level 3/20, Challenge 4/6
+? Too large
+
+Level 3/20, Challenge 5/6
+? Too large
+
+Level 3/20, Challenge 6/6
+? Too large
+
+Bye
+8179
+Level 1/20, Challenge 1/10
+? Too small
+
+Level 1/20, Challenge 2/10
+? Too large
+
+Level 1/20, Challenge 3/10
+? Too large
+
+Level 1/20, Challenge 4/10
+? Correct!
+
+Level 2/20, Challenge 1/8
+? Too small
+
+Level 2/20, Challenge 2/8
+? Too small
+
+Level 2/20, Challenge 3/8
+? Too small
+
+Level 2/20, Challenge 4/8
+? Too small
+
+Level 2/20, Challenge 5/8
+? Too small
+
+Level 2/20, Challenge 6/8
+? Too small
+
+Level 2/20, Challenge 7/8
+? Too small
+
+Level 2/20, Challenge 8/8
+? Too small
+
+Bye
+8180
