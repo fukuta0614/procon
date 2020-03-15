@@ -15,8 +15,8 @@ int main()
 {
     initialize("seed");
     
-    encrypt("../encrypt.cpp", "../encrypt2.enc", "../encrypt.key");
-//    encrypt("../flag.jpg", "../flag.enc", "../flag.key");
+    encrypt("encrypt.cpp", "encrypt.enc", "encrypt.key");
+    encrypt("flag.jpg", "flag.enc", "flag.key");
     
     //  decrypt("encrypt_dec.cpp", "encrypt.enc", "encrypt.key");
     //  decrypt("flag_dec.jpg", "flag.enc", "flag.key");
@@ -26,20 +26,17 @@ void initialize(const char *seed)
 {
     const int N = 1024;
     
-//    FILE *f = fopen(seed, "rb");
-//    if (f==NULL)
-//    {
-//        printf("Failed to open %s\n", seed);
-//        exit(-1);
-//    }
-    
-    dword buf[N] = {0};
-    for (int i = 0; i < N; i++){
-        buf[i] = 1;
+    FILE *f = fopen(seed, "rb");
+    if (f==NULL)
+    {
+        printf("Failed to open %s\n", seed);
+        exit(-1);
     }
-//    fread(buf, sizeof (dword), N, f);
-//
-//    fclose(f);
+    
+    dword buf[N];
+    fread(buf, sizeof (dword), N, f);
+    
+    fclose(f);
     
     init_by_array(buf, N);
 }
