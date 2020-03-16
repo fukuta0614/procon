@@ -49,6 +49,14 @@ struct Factorial {
 // 組み合わせ
 mint nCk(int n, int k, Factorial& f){ return f(n) / (f(n-k) * f(k));}
 
+// nが大きく、n!を予め計算できないとき
+mint nCk(ll n, ll k) {
+    mint denominator = 1, numerator = 1;
+    REP(i, k) { numerator *= (n - i); denominator *= (i + 1); }
+    mint ret = numerator / denominator;
+    return ret;
+}
+
 mint nPk(int n, int k, Factorial& f){ return f(n) / f(n-k);}
 
 mint nHk(int n, int k, Factorial& f){ return nCk(n+k-1, k-1, f);}

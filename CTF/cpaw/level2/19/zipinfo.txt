@@ -1,0 +1,482 @@
+Archive:  misc100.zip
+There is no zipfile comment.
+
+End-of-central-directory record:
+-------------------------------
+
+  Zip archive file size:                     21697 (00000000000054C1h)
+  Actual end-cent-dir record offset:         21675 (00000000000054ABh)
+  Expected end-cent-dir record offset:       21675 (00000000000054ABh)
+  (based on the length of the central directory and its expected offset)
+
+  This zipfile constitutes the sole disk of a single-part archive; its
+  central directory contains 16 entries.
+  The central directory is 1078 (0000000000000436h) bytes long,
+  and its (expected) offset in bytes from the beginning of the zipfile
+  is 20597 (0000000000005075h).
+
+
+Central directory entry #1:
+---------------------------
+
+  mimetype
+
+  offset of local header from start of archive:   0
+                                                  (0000000000000000h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         c42e039f
+  compressed size:                                43 bytes
+  uncompressed size:                              43 bytes
+  length of filename:                             8 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #2:
+---------------------------
+
+  Thumbnails/thumbnail.png
+
+  offset of local header from start of archive:   81
+                                                  (0000000000000051h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         cb990ba7
+  compressed size:                                12229 bytes
+  uncompressed size:                              12229 bytes
+  length of filename:                             24 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #3:
+---------------------------
+
+  meta.xml
+
+  offset of local header from start of archive:   12364
+                                                  (000000000000304Ch) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         bd7c5042
+  compressed size:                                447 bytes
+  uncompressed size:                              1067 bytes
+  length of filename:                             8 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #4:
+---------------------------
+
+  There are an extra 16 bytes preceding this file.
+
+  settings.xml
+
+  offset of local header from start of archive:   12865
+                                                  (0000000000003241h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         9884b824
+  compressed size:                                1292 bytes
+  uncompressed size:                              9113 bytes
+  length of filename:                             12 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #5:
+---------------------------
+
+  There are an extra 16 bytes preceding this file.
+
+  content.xml
+
+  offset of local header from start of archive:   14215
+                                                  (0000000000003787h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         9e30d671
+  compressed size:                                3097 bytes
+  uncompressed size:                              13264 bytes
+  length of filename:                             11 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #6:
+---------------------------
+
+  There are an extra 16 bytes preceding this file.
+
+  styles.xml
+
+  offset of local header from start of archive:   17369
+                                                  (00000000000043D9h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         12acf77c
+  compressed size:                                2295 bytes
+  uncompressed size:                              13529 bytes
+  length of filename:                             10 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #7:
+---------------------------
+
+  There are an extra 16 bytes preceding this file.
+
+  Configurations2/popupmenu/
+
+  offset of local header from start of archive:   19720
+                                                  (0000000000004D08h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             26 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #8:
+---------------------------
+
+  Configurations2/statusbar/
+
+  offset of local header from start of archive:   19776
+                                                  (0000000000004D40h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             26 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #9:
+---------------------------
+
+  Configurations2/menubar/
+
+  offset of local header from start of archive:   19832
+                                                  (0000000000004D78h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             24 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #10:
+---------------------------
+
+  Configurations2/toolbar/
+
+  offset of local header from start of archive:   19886
+                                                  (0000000000004DAEh) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             24 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #11:
+---------------------------
+
+  Configurations2/floater/
+
+  offset of local header from start of archive:   19940
+                                                  (0000000000004DE4h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             24 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #12:
+---------------------------
+
+  Configurations2/accelerator/current.xml
+
+  offset of local header from start of archive:   19994
+                                                  (0000000000004E1Ah) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                2 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             39 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #13:
+---------------------------
+
+  There are an extra 16 bytes preceding this file.
+
+  Configurations2/toolpanel/
+
+  offset of local header from start of archive:   20081
+                                                  (0000000000004E71h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             26 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #14:
+---------------------------
+
+  Configurations2/progressbar/
+
+  offset of local header from start of archive:   20137
+                                                  (0000000000004EA9h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             28 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #15:
+---------------------------
+
+  Configurations2/images/Bitmaps/
+
+  offset of local header from start of archive:   20195
+                                                  (0000000000004EE3h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             none (stored)
+  file security status:                           not encrypted
+  extended local header:                          no
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         00000000
+  compressed size:                                0 bytes
+  uncompressed size:                              0 bytes
+  length of filename:                             31 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+
+Central directory entry #16:
+---------------------------
+
+  META-INF/manifest.xml
+
+  offset of local header from start of archive:   20256
+                                                  (0000000000004F20h) bytes
+  file system or operating system of origin:      MS-DOS, OS/2 or NT FAT
+  version of encoding software:                   2.0
+  minimum file system compatibility required:     MS-DOS, OS/2 or NT FAT
+  minimum software version required to extract:   2.0
+  compression method:                             deflated
+  compression sub-type (deflation):               normal
+  file security status:                           not encrypted
+  extended local header:                          yes
+  file last modified on (DOS date/time):          2015 Oct 16 01:06:24
+  32-bit CRC value (hex):                         9069aae7
+  compressed size:                                274 bytes
+  uncompressed size:                              990 bytes
+  length of filename:                             21 characters
+  length of extra field:                          0 bytes
+  length of file comment:                         0 characters
+  disk number on which file begins:               disk 1
+  apparent file type:                             binary
+  non-MSDOS external file attributes:             000000 hex
+  MS-DOS file attributes (00 hex):                none
+
+  There is no file comment.
+

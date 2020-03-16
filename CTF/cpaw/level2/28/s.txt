@@ -1,0 +1,96 @@
+cpaw
+site
+cpaw
+site
+host1
+cpaw
+site
+IV]Z
+@W=N
+220 Welcome to Cpaw CTF FTP service.
+USER anonymous
+IVoS
+IV(\
+331 Please specify the password.
+IVs\
+PASS anoymous
+530 Login incorrect.
+FQUIT
+s221 Goodbye.
+220 Welcome to Cpaw CTF FTP service.
+4i=@
+IVB:
+USER cpaw_user
+IVgw
+IVnz
++[331 Please specify the password.
+DPASS 5f4dcc3b5aa765d61d8327deb882cf99
+IVIR
+230 Login successful.
+SYST
+215 UNIX Type: L8
+:h+@
+FEAT
+211-Features:
+ EPRT
+ EPSV
+@E\~
+ MDTM
+ PASV
+ REST STREAM
+ SIZE
+ TVFS
+@D\x
+@C\r
+@A\f
+@@\`
+@?\Z
+ UTF8
+211 End
+4X(@
+@?\S
+@=\L
+257 "/"
+@<\ 
+EPSV
+229 Entering Extended Passive Mode (|||60012|).
+@6,c
+lO$_e
+O$_f
+IVvG
+lO$_f
+LIST
+150 Here comes the directory listing.
+IV]x
+O$_f
+-rw-r--r--    1 0        0              36 Nov 16 14:12 dummy
+lO$_f
+6O$_f
+4I:@
+lO$_f
+lO$_f
+226 Directory send OK.
+7O$_g
+@.B'
+TYPE I
+200 Switching to Binary mode.
+4~&@
+@*><
+SIZE dummy
+213 36
+@)VK
+EPSV
+229 Entering Extended Passive Mode (|||60009|).
+RETR dummy
+150 Opening BINARY mode data connection for dummy (36 bytes).
+FLAG file exists in this directory.
+@W@}
+@R@G
+@R@F
+226 Transfer complete.
+@m	@
+`%MDTM dummy
+2213 20151116141244
+`4QUIT
+221 Goodbye.
+IVlA

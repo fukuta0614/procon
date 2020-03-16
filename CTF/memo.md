@@ -101,4 +101,11 @@
                 response = MD5( MD5(A1) ":" nonce ":" nc ":" cnonce ":" qop ":" MD5(A2) )
                 ```
             - md5は、以下のサイトでよくある文字列に対する逆変換ができる
-                - https://hashtoolkit.com/decrypt-hash/?hash=31e101310bcd7fae974b921eb148099c                   
+                - https://hashtoolkit.com/decrypt-hash/?hash=31e101310bcd7fae974b921eb148099c
+                
+                
+http://elliptic-shiho.hatenablog.com/entry/2015/11/12/182219                
+https://www.slideshare.net/sonickun/rsa-n-ssmjp
+
+
+
