@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Tue Mar 17 14:13:43 2020
+Invocation: foremost buildings.png 
+Output directory: /workspace/CTF/pico2019/What_Lies_Within/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: buildings.png
+Start: Tue Mar 17 14:13:43 2020
+Length: 610 KB (625219 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.png 	     610 KB 	          0 	  (657 x 438)
+Finish: Tue Mar 17 14:13:43 2020
+
+1 FILES EXTRACTED
+	
+png:= 1
+------------------------------------------------------------------
+
+Foremost finished at Tue Mar 17 14:13:43 2020
