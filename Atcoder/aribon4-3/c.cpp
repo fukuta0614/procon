@@ -94,6 +94,8 @@ struct TwoSat{
 
         for (int i = 0; i < N; i++) {
             if (scc.scc_group[i] == scc.scc_group[i + N]) return false;
+            // a -> ¬a なら、a = False, ¬a -> aなら a = True
+            // つまり強連結成分のindexが大きいなら、true
             res[i] = scc.scc_group[i] > scc.scc_group[i + N];
         }
         return true;
@@ -125,7 +127,14 @@ int main() {
         return l2 <= r1;
     };
 
-    // 0~N-1: True(ひっくり返さない), N~2N-1: False(ひっくり返す)
+    /*
+    0~N-1: True(ひっくり返さない), N~2N-1: False(ひっくり返す)
+    各i, jに対して、だめな場合のどれかでないこと、を記述していくイメージ
+    例えば、a^b と ¬a^b がだめだったら、
+    ¬(a^b) ^ ¬(¬a^b)
+    -> (¬a ∨ ¬b) ^ (a ∨ ¬b) となるので、2-satの形になる
+     */
+
     TwoSat sat(N);
     REP(i, N) REPN(j, i+1, N){
 

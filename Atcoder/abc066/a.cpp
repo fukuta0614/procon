@@ -29,6 +29,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int A, B, C;
+    cin >> A >> B >> C;
+
+    vector<int> v{A, B, C};
+    int x = *max_element(ALL(v));
+    int sm = accumulate(ALL(v), 0);
+
+    print(sm - x);
+
 
     return 0;
 }

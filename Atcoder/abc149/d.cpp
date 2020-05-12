@@ -29,6 +29,50 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, K;
+    cin >> N >> K;
+
+    int R, S, P;
+    cin >> R >> S >> P;
+
+    string T;
+    cin >> T;
+
+    map<char, int> char2idx;
+    char2idx['r'] = 0;
+    char2idx['s'] = 1;
+    char2idx['p'] = 2;
+
+    vector<int> scores{R, S, P};
+
+    ll ans = 0;
+    int pre = 0;
+    REP(i, K) {
+        for (int idx = i; idx < N; idx += K){
+            int cur = char2idx[T[idx]];
+            int vic = (3 + cur - 1) % 3;
+
+//            print(i, idx, pre, cur, vic);
+            if (idx < K || vic != pre){
+                ans += scores[vic];
+//                print(scores[vic]);
+                pre = vic;
+            } else {
+                if (idx + K < N){
+                    int nxt = char2idx[T[idx + K]];
+                    int nxt_vic = (3 + nxt - 1) % 3;
+                    if (nxt_vic == pre){
+                        pre = (pre + 1) % 3;
+                    } else {
+                        pre = 3 - pre - nxt_vic;
+                    }
+                }
+            }
+        }
+    }
+
+    print(ans);
+
 
     return 0;
 }

@@ -1,9 +1,20 @@
+N, M = [int(x) for x in input().split()]
+N, M = min(N, M), max(N, M)
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
+mod = 10 ** 9 + 7
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+def factorial(n):
+    ans = 1
+    for i in range(1, n + 1):
+        ans = ans * i % mod
+    return ans
+
+
+if N == M:
+    ans = 2 * factorial(N) * factorial(M) % mod
+elif N + 1 == M:
+    ans = factorial(N) * factorial(M) % mod
+else:
+    ans = 0
+
+print(ans)

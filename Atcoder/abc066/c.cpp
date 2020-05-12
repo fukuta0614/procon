@@ -29,6 +29,25 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
+
+    deque<int> ans;
+    REP(i, N){
+        if (i % 2 == 0){
+            ans.emplace_back(A[i]);
+        } else{
+            ans.emplace_front(A[i]);
+        }
+    }
+
+    if (N % 2 == 1){
+        reverse(ALL(ans));
+    }
+
+    print_line(ans, N);
 
     return 0;
 }

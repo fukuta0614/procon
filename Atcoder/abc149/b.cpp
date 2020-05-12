@@ -29,6 +29,16 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    ll A, B, K;
+    cin >> A >> B >> K;
+
+    if (K < A){
+        print(A-K, B);
+    } else if (K < A + B){
+        print(0, B - (K - A));
+    } else {
+        print(0, 0);
+    }
 
     return 0;
 }

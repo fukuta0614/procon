@@ -99,44 +99,19 @@ struct LCA {
         return cost[a] + cost[b] - cost[c] * 2;
     }
 
-    int max_depth_idx = 0;
-    void dfs2(int x, int p){
-        if (depth[x] > depth[max_depth_idx]){
-            max_depth_idx = x;
-        }
-        for (int i = 0; i < to[x].size(); ++i) {
-            int u = to[x][i];
-            if (u == p) continue;
-            dfs2(u, x);
-        }
-    }
+    // uが逃げる方、vが追う方
+    void solve(int u, int v){
 
-    void calc(int u, int v){
-        int lca = operator()(u, v);
+        int ans = length(u, v) / 2;
+        REP(i, n){
+            // はっぱでつかまることはない。その前でつかまるから
+            if (to[i].size() == 1) continue;
 
-        // uが逃げる方
-        if (depth[u] > depth[v]){
-
-            int node;
-            for (int i = 0; i < to[lca].size(); ++i) {
-                int x = to[lca][i];
-                if (depth[x] > depth[u]) continue;
-
-                if (operator()(u, x) != lca){
-                    node = x;
-                    break;
-                }
+            if (length(u, i) < length(v, i)){
+                ans = max(ans, length(v, i));
             }
-            print(lca);
-            dfs2(node, lca);
-            int ans = length(v, max_depth_idx);
-            print(lca, node, max_depth_idx);
-            print(ans);
-        } else {
-
-
-
         }
+        print(ans);
     }
 
 };
@@ -156,9 +131,10 @@ int main() {
         cin >> a >> b; a--;b--;
         g.add_edge(a, b);
     }
-    g.init();
+    g.init(v);
 
-    g.calc(u, v);
+    g.solve(u, v);
+
 
 
     return 0;

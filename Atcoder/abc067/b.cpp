@@ -29,6 +29,19 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, K;
+    cin >> N >> K;
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
+
+    sort(ALL(A), greater<int>());
+
+    int ans = 0;
+    REP(i, K){
+        ans += A[i];
+    }
+
+    print(ans);
 
     return 0;
 }

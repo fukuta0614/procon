@@ -29,6 +29,17 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    ll N, A, B;
+    cin >> N >> A >> B;
+
+    if (A == 0){
+        print(0);
+        return 0;
+    }
+
+    ll x = N / (A + B);
+    ll y = min(N % (A + B), A);
+    print(x * A + y);
 
     return 0;
 }

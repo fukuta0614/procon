@@ -29,6 +29,38 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string s;
+    cin >> s;
+
+    int n = s.size();
+
+    // 最終状態で残る文字列の数の遇奇は、先頭と末尾が同じかどうかのみで決まる
+    int end_num = (s[0] == s.back()) ? 1 : 2;
+
+    // 消せる文字の数が奇数だったら、先手の勝ち
+    if ((n - end_num) % 2 == 1){
+        print("First");
+    } else {
+        print("Second");
+    }
+
+//    s = "";
+//    random_device rd;
+//    mt19937 mt(rd());
+//
+//    char p = '?';
+//    REP(i, 4){
+//        char c;
+//        do {
+//            c = mt() % 3 + 'a';
+//        } while(c == p);
+//        p = c;
+//        s += c;
+//        s += ' ';
+//    }
+//    print(s);
+
+
 
     return 0;
 }

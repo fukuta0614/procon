@@ -29,6 +29,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    ll a, b, x;
+    cin >> a >> b >> x;
+
+    ll p = b / x;
+    ll q = (a - 1) / x;
+    if (a == 0) q = -1;
+
+    print(p - q);
+
 
     return 0;
 }

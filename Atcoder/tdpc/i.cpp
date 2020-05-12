@@ -1,4 +1,4 @@
-// tdpc_i
+// tdpc_i 区間DP
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"

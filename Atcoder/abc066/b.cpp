@@ -29,6 +29,17 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin >> S;
+    int N = S.size();
+
+    int x = N % 2 == 0 ? N/2-1 : N/2;
+    REPN_REV(i, 1, x+1){
+        if (S.substr(0, i) == S.substr(i, i)){
+            print(2*i);
+            break;
+        }
+    }
 
     return 0;
 }

@@ -29,6 +29,36 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<string> S(N);
+    REP(i, N) cin >> S[i];
+
+    vector<map<char, int>> mp(N);
+    REP(i, N){
+        REP(j, S[0].size()){
+            mp[i][S[i][j]]++;
+        }
+    }
+
+    map<char, int> common;
+    REP(c, 26){
+        common[c + 'a'] = 255;
+    }
+    REP(i, N){
+        REP(c, 26){
+            common[c + 'a'] = min(common[c + 'a'], mp[i][c + 'a']);
+        }
+    }
+
+    string ans;
+    REP(c, 26){
+        REP(i, common[c + 'a']){
+            ans += c + 'a';
+        }
+    }
+
+    print(ans);
 
     return 0;
 }

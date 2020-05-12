@@ -29,6 +29,14 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin >> S;
+
+    if (S == "AAA" || S == "BBB"){
+        print("No");
+    } else {
+        print("Yes");
+    }
 
     return 0;
 }

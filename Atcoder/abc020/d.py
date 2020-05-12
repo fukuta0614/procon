@@ -34,9 +34,27 @@ ans = 0
 for i in range(K):
     if i == 0:
         ans += ((n+1)*K*n // 2) % mod
+        print(i, ((n+1)*K*n // 2) % mod)
     else:
         ans += ((i + (n-1)*K + i) * n // 2 * K // res[i]) % mod
+        print(i, ((i + (n-1)*K + i) * n // 2 * K // res[i]) % mod)
+
+ans2 = 0
+
+for j in range(K):
+    tmp = 0
+    for k in range(3):
+        i = k * K + j + 1
+        tmp += i * K // euclidean_algorithm(i, K)
+    ans2 += tmp
+    print(j+1, tmp)
+
+print(ans, ans2)
+
 for i in range(1, r+1):
     ans += ((i + n * K) * K // res[i]) % mod
+
+print(res)
+print(n, r)
 
 print(ans % mod)

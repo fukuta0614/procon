@@ -3,7 +3,7 @@ add_definitions(-DLOCAL)
 add_definitions(-ftrapv)
 add_definitions(-D_GLIBCXX_DEBUG)
 project(abc066)
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++14)
 
 add_executable(abc066_a a.cpp)
 add_executable(abc066_b b.cpp)

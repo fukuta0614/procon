@@ -29,6 +29,20 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    string ans;
+    REP(i, s2.size()){
+        ans += s1[i];
+        ans += s2[i];
+    }
+    
+    if (s1.size() > s2.size()){
+        ans += s1.back();
+    }
+    print(ans);
+
 
     return 0;
 }

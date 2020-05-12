@@ -29,6 +29,11 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S, T;
+    cin >> S >> T;
+
+    string ans = T + S;
+    print(ans);
 
     return 0;
 }

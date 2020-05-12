@@ -29,6 +29,28 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    ll N, x;
+    cin >> N >> x;
+    vector<ll> A(N);
+    REP(i, N) cin >> A[i];
+
+    ll ans = 0;
+    ll tmp = A[0];
+    REPN(i, 1, N){
+        ll sm = tmp + A[i];
+
+        ll diff = sm > x ? sm - x : 0;
+        A[i] -= diff;
+        ans += diff;
+
+        if (A[i] < 0){
+            A[i] = 0;
+        }
+
+        tmp = A[i];
+    }
+
+    print(ans);
 
     return 0;
 }

@@ -29,6 +29,41 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin >> S;
+
+    int Q;
+    cin >> Q;
+
+    deque<char> ans;
+    REP(i, S.size()) ans.emplace_back(S[i]);
+
+    bool dir = true;
+    REP(i, Q){
+        int t; cin >> t;
+        if (t == 1) {
+            dir = not dir;
+        } else {
+            int f; char c;
+            cin >> f >> c;
+
+            if (dir == (f == 1)){
+                ans.emplace_front(c);
+            } else {
+                ans.emplace_back(c);
+            }
+        }
+    }
+
+    if (not dir){
+        reverse(ALL(ans));
+    }
+
+    string ans_s;
+    for (auto c: ans) ans_s += c;
+
+    print(ans_s);
+
 
     return 0;
 }

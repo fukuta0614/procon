@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+add_definitions(-ftrapv)
+add_definitions(-D_GLIBCXX_DEBUG)
+project(abc166)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+
+add_executable(abc166_a a.cpp)
+add_executable(abc166_b b.cpp)
+add_executable(abc166_c c.cpp)
+add_executable(abc166_d d.cpp)
+add_executable(abc166_e e.cpp)
+add_executable(abc166_f f.cpp)

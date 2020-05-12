@@ -70,7 +70,7 @@ struct Factorial {
 };
 
 // 組み合わせ
-mint nCk(int n, int k, Factorial& f){ return f(n) / (f(n-k) * f(k));}
+mint nCk(int n, int k, Factorial& f){ return n >= k ? (f(n) / (f(n-k) * f(k))) : mint(0);}
 
 
 int main() {
@@ -87,16 +87,24 @@ int main() {
     Factorial f(N);
 
     mint ans = 0;
-    mint tmp = 0;
-    REPN_REV(i, 1, N+1){
-        tmp += nCk(N, i, f) * mint(2).pow(N);
-        ans += i * C[i] * tmp;
-        print(tmp, ans);
-    }
-    ans = ans * mint(2).pow(N);
-//    4 * 2 * 5  + 8 * 4 + 13 * 4
-    print(ans);
+    REPN(i, 1, N+1) {
+//        mint tmp = 0;
+//        mint n = N-i;
+//        if (n == 0){
+//            tmp = 1;
+//        } else {
+//            tmp = (n+2) * mint(2).pow(n-1);
+//        }
+////        REPN(j, 1, N + 1) {
+////            tmp += mint(j) * nCk(N - i, j - 1, f);
+////        }
+//        ans += tmp * C[i-1] * mint(2).pow(i-1);
+        ans += mint(N-i+2) * mint(2).pow(N-2) * mint(C[i-1]);
 
+    }
+
+    ans = ans * mint(2).pow(N);
+    print(ans);
 
     return 0;
 }

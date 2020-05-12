@@ -29,6 +29,24 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<ll> A(N);
+    REP(i, N) cin >> A[i];
+
+    vector<ll> cumsum(N+1);
+    REP(i, N) cumsum[i+1] = cumsum[i] + A[i];
+
+    ll sm = cumsum[N];
+    ll ans = 1e18;
+    REP(i, N-1) {
+        ll x = cumsum[i+1];
+        ll y = sm - x;
+
+        ans = min(ans, abs(x - y));
+    }
+
+    print(ans);
 
     return 0;
 }

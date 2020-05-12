@@ -24,11 +24,84 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+
+int mod = 1e9 + 7;
+struct mint {
+    ll x;
+    mint(ll a=0){x = a>=0 ? a%mod : mod-(-a)%mod;}
+    mint(const mint& m):x(m.x){}
+    mint& operator+=(const mint& a) { if ((x += a.x) >= mod) x -= mod; return *this; }
+    mint& operator+=(const int& a) { if ((x += a) >= mod) x -= mod; return *this; }
+    mint& operator-=(const mint& a) { if ((x += mod-a.x) >= mod) x -= mod; return *this; }
+    mint& operator-=(const int& a) { if ((x += mod-a) >= mod) x -= mod; return *this; }
+    mint& operator*=(const mint& a) { (x *= a.x) %= mod; return *this; }
+    mint& operator*=(const int& a) { (x *= a) %= mod; return *this; }
+    mint operator+(const mint& a) const { mint res(*this); return res+=a; }
+    mint operator+(const int& a) const { mint res(*this); return res+=a; }
+    mint operator-(const mint& a) const { mint res(*this); return res-=a; }
+    mint operator-(const int& a) const { mint res(*this); return res-=a; }
+    mint operator-() const {mint res(*this); return mint(0)-res;}
+    mint operator*(const mint& a) const { mint res(*this); return res*=a; }
+    mint operator*(const int& a) const { mint res(*this); return res*=a; }
+    bool operator==(const mint& a) const { return x == a.x;}
+    bool operator==(const int& a) const { return x == a;}
+    bool operator!=(const mint& a) const { return x != a.x;}
+    bool operator!=(const int& a) const { return x != a;}
+    operator bool() const {return x>0;}
+
+    mint pow(ll t) const {mint r=1,a=*this; do{if(t&1)r*=a;a*=a;}while(t>>=1);return r;}
+    mint pow(mint t) const {mint r=1,a=*this; do{if(t.x&1)r*=a;a*=a;}while(t.x>>=1);return r;}
+    mint inv() const { return pow(mod-2); }
+    mint& operator/=(const mint& a) { return (*this) *= a.inv(); }
+    mint& operator/=(const int& a) { return (*this) *= mint(a).inv(); }
+    mint operator/(const mint& a) const { mint res(*this); return res/=a; }
+    mint operator/(const int& a) const { mint res(*this); return res/=a; }
+
+    friend ostream& operator<<(ostream& os, const mint& m) {cout << m.x; return os;}
+    friend istream& operator>>(istream& is, mint& m) { return is >> m.x; }
+};
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, P;
+    cin >> N >> P;
+    mod = P;
+
+    string S;
+    cin >> S;
+
+    if (P == 2 || P == 5){
+        ll ans = 0;
+        REP(i, N){
+            if ((S[i]- '0') % P == 0){
+                ans += i+1;
+            }
+        }
+        print(ans);
+        return 0;
+    }
+
+    mint tmp = 1;
+    vector<mint> A(N);
+    REP(i, N){
+        A[N-i-1] = tmp * mint((S[N-i-1] - '0'));
+        tmp *= mint(10);
+    }
+
+    ll ans = 0;
+    map<ll, ll> mp;
+    mint cumsum = 0;
+    mp[cumsum.x]++;
+    REP(i, N){
+        cumsum += A[i];
+        ans += mp[cumsum.x];
+        mp[cumsum.x]++;
+    }
+
+    print(ans);
 
     return 0;
 }

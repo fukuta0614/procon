@@ -29,6 +29,18 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int A, B;
+    cin >> A >> B;
+
+    REPN(n, 1, 1001){
+        int x = (int)(n * 0.08);
+        int y = (int)(n * 0.1);
+        if (x == A && y == B){
+            print(n);
+            return 0;
+        }
+    }
+    print(-1);
 
     return 0;
 }
