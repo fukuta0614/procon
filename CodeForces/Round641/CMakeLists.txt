@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+add_definitions(-ftrapv)
+add_definitions(-D_GLIBCXX_DEBUG)
+project(Round641)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++11)
+
+add_executable(Round641_a a.cpp)
+add_executable(Round641_b b.cpp)
+add_executable(Round641_c c.cpp)
+add_executable(Round641_d d.cpp)
+add_executable(Round641_e e.cpp)
+add_executable(Round641_f f.cpp)

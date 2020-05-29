@@ -58,6 +58,28 @@ namespace Geom {
         return min(min(d0, d1), min(d2, d3));
     }
 
+    // 点aを通るベクトルuと、点bを通るベクトルvの交点
+    Point calc_intersection_from_points_and_vectors(Point a, Point u, Point b, Point v){
+
+        // u, vが平行だと交わらない
+        if ((u.x * v.y) - (u.y * v.x) == 0){
+            return Point(0, 0);
+        }
+
+        double s = (v.y * (b.x - a.x) - v.x * (b.y - a.y)) / ((u.x * v.y) - (u.y * v.x));
+        double t = (u.y * (b.x - a.x) - u.x * (b.y - a.y)) / ((u.x * v.y) - (u.y * v.x));
+
+        Point res = b + v * t;
+        Point res2 = a + u * s;
+
+        if ((res - res2).norm2() > eps) {
+            print("are??"); // for debug
+            print(a, u, b, v);
+            return Point(0, 0);
+        }
+        return res;
+    }
+
     enum RELATION_BETWEEN_SEGMENT_AND_POINT {
         COUNTER_CLOCKWISE = 1,     // p1とp2のp0を挟んだ位置関係が反時計回り
         CLOCKWISE = -1,            // 時計回り
@@ -174,4 +196,24 @@ namespace Geom {
         return {angle1, angle2};
     }
 
+    // 点a, b, cを通る円を返す
+    bool calc_circle_on_three_points(Point a, Point b, Point c, Circle& res){
+
+        Point ab = (b - a) ;
+        Point ac = (c - a) ;
+
+        Point mid_AB = a + ab / 2;
+        Point mid_AC = a + ac / 2;
+        Point AB_norm_v = ab.rot90();
+        Point AC_norm_v = ac.rot90();
+
+        // a, b, cが一直線上にあったらだめ
+        if (ab.cross(ac) == 0) return false;
+
+        Point center = calc_intersection_from_points_and_vectors(mid_AB, AB_norm_v, mid_AC, AC_norm_v);
+        double r = (a - center).norm();
+
+        res = Circle(center, r);
+        return true;
+    }
 }

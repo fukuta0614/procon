@@ -2,6 +2,7 @@
 // Created by 福田圭佑 on 2019/08/18.
 //
 
+// 1-index
 struct BIT {
     int sz;
     vector<int> tree;

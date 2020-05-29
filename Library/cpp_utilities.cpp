@@ -31,6 +31,7 @@ vector<ll> get_divisors(ll n){
     for (int i = 1; i * i <= n; i++){
         if (i * i == n){
             res.emplace_back(i);
+            break;
         }
         if (n % i == 0){
             res.emplace_back(i);

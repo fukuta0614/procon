@@ -1,5 +1,6 @@
 // aribon4-5_c
 // AOJ2559 Minimum Spanning Tree
+// http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"

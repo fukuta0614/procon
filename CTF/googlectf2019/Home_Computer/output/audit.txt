@@ -1,0 +1,21 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Sat Apr 18 11:11:32 2020
+Invocation: foremost file0 
+Output directory: /workspace/CTF/googlectf2019/Home_Computer/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: file0
+Start: Sat Apr 18 11:11:32 2020
+Length: 111 KB (114606 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+Finish: Sat Apr 18 11:11:32 2020
+
+0 FILES EXTRACTED
+	
+------------------------------------------------------------------
+
+Foremost finished at Sat Apr 18 11:11:32 2020

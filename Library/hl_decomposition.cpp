@@ -2,6 +2,7 @@
 // Created by 福田圭佑 on 2020/01/07.
 //
 
+// 再帰してるからちょっと遅い
 struct HL_decomposition{
     int n;
     vector<vector<int>> G;
