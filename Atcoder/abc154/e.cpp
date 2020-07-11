@@ -46,7 +46,7 @@ int main() {
                     if (d == 0){
                         dp[i+1][j][k || (d!=n)] += dp[i][j][k];
                     } else {
-                        if (j+1 < 4){
+                        if (j+1 < K+1){
                             dp[i+1][j+1][k || (d!=n)] += dp[i][j][k];
                         }
                     }

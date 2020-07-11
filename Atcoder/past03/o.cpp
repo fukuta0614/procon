@@ -15,7 +15,7 @@ typedef pair<ll, int> P;
 #define REPN_REV(i, m, n) for (int (i) = (int)(n) - 1 ; (i) >= m ; --(i))
 #define ALL(x) x.begin(), x.end()
 
-#define INF (ll)(1e9)
+#define INF (ll)(1e15)
 #define MOD (1000000007)
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
@@ -23,6 +23,71 @@ typedef pair<ll, int> P;
 template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
+
+
+template <typename T>
+struct MinCostFlow {
+    struct edge {int to, cap; T cost; int rev;};
+    vector<vector<edge>> G;
+    int v_num;
+
+    MinCostFlow(int n): v_num(n), G(n) {}
+
+    void add_edge(int from, int to, int cap, T cost) {
+        G[from].emplace_back((edge){to, cap, cost, (int)G[to].size()});
+        G[to].emplace_back((edge){from, 0, -cost, (int)G[from].size() - 1});
+    }
+
+    T min_cost_flow(int s, int t, int f) {
+        T res = 0;
+
+        while (f > 0) {
+
+            vector<T> dist(v_num, INF);
+            vector<int> prev_v(v_num, 0), prev_e(v_num, 0);
+            dist[s] = 0;
+
+            // Bellman-Ford
+            bool update = true;
+            while (update) {
+                update = false;
+                REP(v, v_num) {
+                    if (dist[v] == INF) continue;
+
+                    REP(i, G[v].size()) {
+                        edge &e = G[v][i];
+                        if (e.cap > 0 && dist[e.to] > dist[v] + e.cost) {
+                            dist[e.to] = dist[v] + e.cost;
+                            prev_v[e.to] = v;
+                            prev_e[e.to] = i;
+                            update = true;
+                        }
+                    }
+                }
+            }
+
+            //
+            if (dist[t] == INF){
+                return  -1;
+            }
+
+            // 最短経路に流す
+            int d = f;
+            for (int v = t; v != s; v = prev_v[v]){
+                d = min(d, G[prev_v[v]][prev_e[v]].cap);
+            }
+
+            f -= d;
+            res += d * dist[t];
+            for (int v = t; v != s; v = prev_v[v]){
+                edge &e = G[prev_v[v]][prev_e[v]];
+                e.cap -= d;
+                G[v][e.rev].cap += d;
+            }
+        }
+        return res;
+    }
+};
 
 int main() {
 #ifdef LOCAL
@@ -37,60 +102,33 @@ int main() {
     vector<ll> R(3);
     REP(i, 3) cin >> R[i];
 
-    vector<vector<ll>> scores(N, vector<ll>(3, 0));
+    // 0-2 ラウンド
+    // 3-3+N-1 各棒
+    // 3+N, 3+N+1 始点終点
+
+    int s = N+3, t = N+4;
+    auto g = MinCostFlow<ll>(N+5);
+
+    REP(i, 3) g.add_edge(s, i, M, 0);
+
     REP(i, 3) REP(j, N){
-        scores[j][i] = (ll)(A[j] * pow(B[j], (i+1))) % R[i];
+        ll score = A[j] * (ll)pow(B[j], i+1) % R[i];
+        g.add_edge(i, 3+j, 1, -score);
     }
 
-    REP(i, 2) print(scores[i]);
-
-    set<P> st;
-    REP(i, 3) REP(j, N){
-        st.emplace(scores[j][i]  - (A[j] * pow(B[j], 1)), N*i+j);
+    REP(j, N){
+        ll penalty;
+        penalty = A[j] * (ll)pow(B[j], 1);
+        g.add_edge(3+j, t, 1, penalty);
+        penalty = A[j] * (ll)pow(B[j], 2) - A[j] * (ll)pow(B[j], 1);
+        g.add_edge(3+j, t, 1, penalty);
+        penalty = A[j] * (ll)pow(B[j], 3) - A[j] * (ll)pow(B[j], 2);
+        g.add_edge(3+j, t, 1, penalty);
     }
 
-    for (auto e: st){
-        print(e);
-    }
-
-    vector<int> X(3);
-    vector<vector<int>> cnt(N, vector<int>(3, 0));
-
-    ll ans = 0;
-    REP(m, 3*M){
-        P p = *st.rbegin();
-        st.erase(p);
-        ll score = p.first;
-        int x = p.second;
-        int i = x / N;
-        int j = x % N;
-        print(i, j, score);
-        if (X[i] == M) {
-            m--;
-            continue;
-        }
-
-        cnt[j][i]++;
-        X[i]++;
-        int n = cnt[j][0] + cnt[j][1] + cnt[j][2];
-
-        REP(k, 3){
-            P p0 = P(scores[j][k] + A[j] * pow(B[j], n-1) - (A[j] * pow(B[j], n)), N*k+j);
-            if (n == 1){
-                p0 = P(scores[j][k] - (A[j] * pow(B[j], n)), N*k+j);
-            }
-            if (st.find(p0) != st.end()) st.erase(p0);
-            P p1 = P(scores[j][k] + A[j] * pow(B[j], n) - (A[j] * pow(B[j], n+1)), N*k+j);
-            if (X[k] != M) st.emplace(p1);
-        }
-
-        ans += score;
-    }
-    print(cnt);
+    ll ans = -g.min_cost_flow(s, t, 3*M);
 
     print(ans);
-
-
 
     return 0;
 }

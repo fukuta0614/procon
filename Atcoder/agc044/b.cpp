@@ -24,10 +24,52 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+int dx[8]={ 1, 0, -1, 0, -1, 1, -1, 1};
+int dy[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
+bool bound_check(int i, int j, int N, int M) {return (0 <= i) && (i < N) && (0 <= j) && (j < M);}
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    int N;
+    cin >> N;
+    vector<int> A(N*N);
+    REP(i, N*N) {cin >> A[i]; A[i]--;}
+
+    vector<vector<int>> D(N, vector<int>(N, 0));
+    REP(i, N) REP(j, N){
+        D[i][j] = min(min(i, j), min(N-i-1, N-j-1));
+    }
+
+    vector<vector<bool>> occupied(N, vector<bool>(N, true));
+    int ans = 0;
+    REP(x, N*N){
+        int xi = A[x] / N;
+        int xj = A[x] % N;
+
+        ans += D[xi][xj];
+        occupied[xi][xj] = false;
+        queue<P> q;
+        q.emplace(xi, xj);
+        while (not q.empty()){
+            P p = q.front(); q.pop();
+            int i = p.first;
+            int j = p.second;
+            REP(k, 4){
+                int ni = i + dx[k];
+                int nj = j + dy[k];
+                if (not bound_check(ni, nj, N, N)) continue;
+                if (D[i][j] + occupied[i][j] < D[ni][nj]){
+                    D[ni][nj] = D[i][j] + occupied[i][j];
+                    q.emplace(ni, nj);
+                }
+            }
+        }
+    }
+
+    print(ans);
 
 
     return 0;

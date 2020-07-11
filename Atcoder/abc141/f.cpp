@@ -105,33 +105,6 @@ ull maxSubarrayXOR(vector<ull> set, int n)
     return res;
 }
 
-ull maxSubarrayXOR2(vector<ull> a, int n){
-    ll i, j;
-
-    ull rank = 0;
-    for (i = 59; i >= 0; i--) {
-        for (j = rank; j < n; j++) {
-            if (a[j] & (1LL << i)) break;
-        }
-        if (j == n) {
-            continue;
-        }
-
-        if (j > rank) a[rank] ^= a[j];
-        for (j = rank + 1; j < n; j++) {
-            a[j] = min(a[j], a[j] ^ a[rank]);
-        }
-
-        rank++;
-    }
-    ull x = 0;
-    for (i = 0; i < n; i++) {
-        x ^= a[i];
-//        x = max(x, x ^ a[i]);
-    }
-
-    return x;
-}
 
 int main() {
 #ifdef LOCAL

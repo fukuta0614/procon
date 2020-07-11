@@ -24,6 +24,33 @@ template<class T> void print(const T& x){cout << x << endl;}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
+ll N, A, B, C, D;
+map<ll, ll> memo;
+
+ll dfs(ll n){
+
+    if (memo.find(n) != memo.end()){
+        return memo[n];
+    }
+
+    ll tmp = 1e18;
+    if (n < tmp / D) tmp = n * D;
+
+    ll a = n - n % 2;
+    tmp = min(tmp, D * (n % 2) + A + dfs(a/2));
+    if (n % 2) tmp = min(tmp, D * (2 - (n % 2)) + A + dfs(a/2+1));
+
+    ll b = n - n % 3;
+    tmp = min(tmp, D * (n % 3) + B + dfs(b/3));
+    if (n % 3) tmp = min(tmp, D * (3 - (n % 3)) + B + dfs(b/3+1));
+
+    ll c = n - n % 5;
+    tmp = min(tmp, D * (n % 5) + C + dfs(c/5));
+    if (n % 5) tmp = min(tmp, D * (5 - (n % 5)) + C + dfs(c/5+1));
+
+    return memo[n] = tmp;
+}
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
@@ -32,14 +59,13 @@ int main() {
     int T;
     cin >> T;
     REP(_, T){
-        ll N, A, B, C, D;
         cin >> N >> A >> B >> C >> D;
-
-
-
+        memo.clear();
+        memo[1] = D;
+        memo[0] = 0;
+        ll ans = dfs(N);
+        print(ans);
     }
-
-
 
     return 0;
 }
