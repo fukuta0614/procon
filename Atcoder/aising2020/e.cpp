@@ -25,34 +25,6 @@ template<class T, class... A> void print(const T& first, const A&... rest) { cou
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
 
-// 1-index
-struct BIT {
-    int sz;
-    vector<int> tree;
-
-    BIT(int n) {
-        sz = n;
-        tree.resize(n+1);
-    }
-
-    ll sum(int i){
-        ll sm = 0;
-        while (i > 0){
-            sm += tree[i];
-            i -= i & -i;
-        }
-        return sm;
-    }
-
-    void add(int i, int x){
-        while (i <= sz){
-            tree[i] += x;
-            i += i & -i;
-        }
-    }
-};
-
-
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
@@ -63,57 +35,49 @@ int main() {
     while (T--){
         int N;
         cin >> N;
-        vector<pair<int, int>> inp(N);
 
+        vector<vector<int>> left(N+1);
+        vector<vector<int>> right(N+1);
         ll ans = 0;
         REP(i, N){
             int k, l, r;
             cin >> k >> l >> r;
-            ans += r;
-            inp[i] = P(k, l-r);
-        }
-
-        sort(ALL(inp), [](P& a, P& b){
-            return abs(a.second) > abs(b.second);
-        });
-
-        BIT bit1(N);
-        BIT bit2(N);
-        vector<int> undefined;
-//        print(ans);
-
-        int max_k=1, max_k2=1;
-        REP(i, N){
-            int k = inp[i].first;
-            ll score = inp[i].second;
-
-            if (score >= 0){
-//                print(k, bit1.sum(k), bit1.sum(max_k));
-                if (bit1.sum(k) < k && bit1.sum(max_k) < max_k){
-                    max_k = max(max_k, k);
-                    bit1.add(k, 1);
-                    ans += score;
-                } else {
-//                    undefined.emplace_back(i);
-                }
-
+            if (l > r){
+                left[k].emplace_back(l-r);
+                ans += r;
             } else {
-                int k2 = N-k;
-//                print(k2, bit2.sum(k2), bit2.sum(max_k2));
-                if (bit2.sum(k2) < k2 && bit2.sum(max_k2) < max_k2){
-                    max_k2 = max(max_k2, k2);
-                    bit2.add(k2, 1);
-                    ans += 0;
-                } else {
-//                    undefined.emplace_back(i);
-                    ans += score;
-                }
+                right[N-k].emplace_back(r-l);
+                ans += l;
             }
-//            print(i, inp[i], ans);
         }
+
+        priority_queue<int, vector<int>, greater<int>> pq_l, pq_r;
+
+        REP(k, N+1){
+            for (auto x: left[k]){
+                pq_l.emplace(x);
+                ans += x;
+            }
+
+            while (pq_l.size() > k){
+                ll x = pq_l.top(); pq_l.pop();
+                ans -= x;
+            }
+        }
+
+        REP(k, N+1){
+            for (auto x: right[k]){
+                pq_r.emplace(x);
+                ans += x;
+            }
+
+            while (pq_r.size() > k){
+                ll x = pq_r.top(); pq_r.pop();
+                ans -= x;
+            }
+        }
+
         print(ans);
-
-
     }
 
 

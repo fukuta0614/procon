@@ -31,18 +31,41 @@ int main() {
 
     int N, Q;
     cin >> N >> Q;
+
     vector<int> A(N);
-    REP(i, N) cin >> A[i];
+    iota(ALL(A), 1);
+    set<int> swaped{N};
+
+    auto swap_func = [&](int x){
+        swap(A[x], A[x+1]);
+        for (int i = x-1; i <= x+1; ++i) {
+            if (i < 0 || N-1 <= i) continue;
+            if (A[i] > A[i+1]){
+                swaped.insert(i);
+            } else {
+                swaped.erase(i);
+            }
+        }
+
+    };
 
     REP(_, Q){
         int t, x, y;
         cin >> t >> x >> y;
+        x--; y--;
         if (t == 1){
-
+            swap_func(x);
         } else {
-
+            int i;
+            while (true){
+                i = *swaped.lower_bound(x);
+                if (y <= i || N-1 <= i) break;
+                swap_func(i);
+            }
         }
     }
+
+    print_line(A, N);
 
     return 0;
 }

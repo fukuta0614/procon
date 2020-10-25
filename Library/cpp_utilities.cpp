@@ -60,6 +60,29 @@ struct EratosthenesSieve{
     }
 };
 
+struct FastFactorization{
+    vector<int> smallest_divisor;
+
+    FastFactorization(int N): smallest_divisor(N+1, -1){
+        smallest_divisor[1] = 1;
+        for (int n=2; n<=N; n++){
+            if (smallest_divisor[n] != -1) continue;
+            for (int x = n; x <= N; x+=n) smallest_divisor[x] = n;
+        }
+    }
+
+    map<int, int> operator()(int N){
+        map<int, int> res;
+        int n = N;
+        while (n > 1) {
+            int d = smallest_divisor[n];
+            res[d]++;
+            n /= d;
+        }
+        return res;
+    };
+};
+
 bool is_prime(int n){
     if (n == 1) return false;
     for (int a=2; a*a <= n; a++) if (n % a == 0) return false;
