@@ -1,0 +1,390 @@
+hey guys bobby here
+
+today we're going to take a look at how
+
+to prepare for the oecp
+
+labs and what the whole journey actually
+
+means
+
+um starting right off the bat
+
+my first point would be allocating as m
+
+as much time as you can for the for the
+
+whole preparation thing
+
+so in my case i was i was a student
+
+when i when i started the preparation so
+
+i didn't really have in
+
+that much time but i guess if you
+
+already if you're already working or
+
+you already have a family and stuff like
+
+that it's even worse
+
+with that time so i would say that okay
+
+being able to allocate as much as one to
+
+two hours a day
+
+prior to let's say for a period of like
+
+three months before starting the actual
+
+osp labs
+
+would be critical not only because
+
+um you don't really know what to expect
+
+but
+
+more because you really have
+
+you really need to go through all of the
+
+you know required steps
+
+to actually you know not waste your time
+
+and not waste your money uh the second
+
+point
+
+would be knowing your level
+
+i mean approximately level from
+
+beforehand so what i mean by approximate
+
+level
+
+well you know not everybody's a
+
+professional from
+
+from the get-go right i mean i i don't
+
+think anybody is
+
+so you know knowing your level from
+
+beforehand is essential so you know
+
+how much time you actually have to
+
+dedicate and how much on what other
+
+things you have you actually have to
+
+improve right
+
+and how i actually settled
+
+my level so to say before starting the
+
+icp labs was
+
+i simply went to hack the box and
+
+boomhub
+
+and tried to do as many boxes as i could
+
+like the easy and the medium levels
+
+without any hints whatsoever right
+
+because this is actually very important
+
+the there is like a hint trap where you
+
+do
+
+you know you do the retry retired boxes
+
+or like the old boxes
+
+and you solve them buddy but you solve
+
+them with the hints
+
+and that's not really effective i mean
+
+it is to some degree but
+
+you can have you kind of have to be very
+
+i mean there's like a very slight very
+
+fragile line between
+
+a uh you know you actually solving the
+
+boxes on yourself or you're actually
+
+solving
+
+only 10 of the box and the rest of the
+
+nine percent is
+
+hints so the third point would be uh
+
+solving more than a half of the dj news
+
+obviously b boxes laced so i'll leave a
+
+link in the description
+
+with all the boxes that are like kind of
+
+they come recommended for the osp and
+
+some of them actually look very a lot
+
+like the
+
+osp labs so you know solving
+
+um yeah solving half of them
+
+without yeah let's say without hints or
+
+with very little hints would actually
+
+mean that you're
+
+i would say good enough yeah good enough
+
+to actually
+
+start the osp labs and you know go
+
+confidently throughout it
+
+and like be very confident that you will
+
+be able to pass it
+
+right so this this will be the third
+
+point the fourth point
+
+would be being comfortable with stack
+
+based uh buffer overflows
+
+right uh i was actually very scared at
+
+first as
+
+i guess many more of you are and the
+
+thing is that they're not actually that
+
+hard so
+
+after we like and get to understand some
+
+tricks
+
+uh it's really easy and like they're
+
+very easy to follow they have a really
+
+logic step-by-step uh let's say walk
+
+through
+
+i was very lucky to be honest with i
+
+have some colleagues in my uh
+
+cyber security team shout out to htsp
+
+um and they really helped me throughout
+
+the whole osp journey and especially on
+
+the stack base overflows because i
+
+haven't had any experience beforehand
+
+whatsoever
+
+right um i'll leave a link i also leave
+
+a link with the
+
+uh with some tips on how to prepare for
+
+it like some step-by-step
+
+guides uh why is it that important to
+
+prepare for the stack based overflow
+
+you may ask well
+
+the thing is that the boxes the the the
+
+i mean
+
+the box in the doing the ocp exam itself
+
+is worth 25 points so you basically need
+
+70 out of 100 to pass right so just
+
+25 is a lot of is a lot of points for
+
+for such an exam
+
+and it's actually really easy to do
+
+you'll yeah you'll see all right so the
+
+fifth
+
+and probably the most important point
+
+after all is
+
+knowing how to properly and
+
+you know neatly take notes and what i
+
+mean by that well personally
+
+i use notion for note-taking and
+
+it's really easy and really convenient
+
+because i can simply
+
+create new pages for the for let's say
+
+for the oscp
+
+land boxes and i could easily you can
+
+easily create pages maintain them manage
+
+them and like
+
+tag them differently uh for example
+
+in my case i simply created a table when
+
+i was doing the tj knows list
+
+i created a table where i would tag
+
+each box whether they were linux whether
+
+they were
+
+windows whether whether they were
+
+something else
+
+and also i think most importantly i
+
+would tag
+
+the vulnerability and the tools that
+
+i've used
+
+right so taking notes both of the
+
+vulnerabilities
+
+that a certain paranormal machine had
+
+and also the tools that we've used for
+
+for it
+
+are i mean these are the the most
+
+important
+
+things to take note of right because it
+
+will be in the case of oh
+
+i have this i don't know active
+
+directory
+
+vulnerable machine but i don't actually
+
+know what tools i've previously used
+
+right so
+
+you go notion you create like the table
+
+you have a box
+
+and you you say oh this this was this
+
+was active directory windows
+
+i don't know what kind of version and
+
+i've used this this and this and that
+
+right so you'll be very convenient and
+
+you could search very easily
+
+even during the exam but yeah so that
+
+was it guys uh
+
+thank you so much for your attention i
+
+hope this
+
+this video really helped you uh
+
+preparing for up you know oscp labs
+
+i'll also record one for you know
+
+actually
+
+preparing for the oasis exam itself
+
+because that's a little bit more
+
+different
+
+uh but this should you know with
+
+with the tips here you should i'm very
+
+confident that you will
+
+be more than prepared for for starting
+
+the osp
+
+labs themselves so yeah good luck on
+
+that
+
+and i'll see you in the next video bye
+
