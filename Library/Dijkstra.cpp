@@ -2,6 +2,8 @@
 // Created by 福田圭佑 on 2019/12/31.
 //
 
+typedef pair<ll, int> P;
+
 struct Graph {
 
     struct Edge {
@@ -22,46 +24,34 @@ struct Graph {
         edges[v].emplace_back(v, u, c);
     }
 
-    vector<int> dijkstra(int s, int L){
+    ll dijkstra(int s, int t){
 
-        using PP = pair<pair<int, ll>, int>;
+        priority_queue<P, vector<P>, greater<P> > pq;
+        pq.push(P(0, s));
 
-        priority_queue<PP, vector<PP>, greater<PP>> pq;
-        pq.push(PP( P(0, 0), s));
-
-        vector<P> dist(n, P(INF,0));
-        dist[s] = P(0,0);
+        vector<ll> dist(n, INF);
+        dist[s] = 0;
 
         while (!pq.empty()){
-            PP pp = pq.top(); pq.pop();
+            P p = pq.top(); pq.pop();
 
-            int cnt = pp.first.first;
-            ll l = pp.first.second;
+            ll cost = p.first;
+            int u = p.second;
 
-            int v = pp.second;
-//            if (v == t) return cnt;
+            if (u == t) {
+                return cost;
+            }
 
-            for (auto edge: edges[v]){
+            for (auto edge: edges[u]){
 
-                int ncnt = cnt;
-                ll nl = l + edge.w;
-
-                if (nl > L){
-                    ncnt++;
-                    nl = edge.w;
-                }
-
-                P ncost = P(ncnt, nl);
+                ll ncost = cost + edge.w;
 
                 if (ncost < dist[edge.v]){
                     dist[edge.v] = ncost;
-                    pq.push(PP(ncost, edge.v));
+                    pq.emplace(ncost, edge.v);
                 }
             }
         }
-
-        vector<int> ret(n);
-        REP(i, n) ret[i] = dist[i].first;
-        return ret;
+        return -1;
     }
 };

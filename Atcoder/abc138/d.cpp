@@ -58,74 +58,72 @@ struct Graph {
     }
 };
 
-
-struct SegTree{
-    int size;
-    vector<long long> val;
-    vector<long long> lazy;
+template<typename T>
+struct LazySegmentTree{
+    int n;
+    vector<T> val;
+    vector<T> lazy;
     vector<int> width;
 
-    SegTree(int n_){
-        size = 1;
-        while (size < n_) size <<= 1;
-        val = vector<long long>(size*2, 0);
-        lazy = vector<long long>(size*2, 0);
-        width = vector<int>(size*2, 1);
+    explicit LazySegmentTree(int n_){
+        n = 1;
+        while (n < n_) n <<= 1;
 
-        for (int i = size-2; i >= 0; i--) {
+        val = vector<T>(n<<1, 0);
+        lazy = vector<T>(n<<1, 0);
+        width = vector<int>(n<<1, 1);
+        for (int i = n-2; i >= 0; i--) {
             width[i] = width[i*2+1] + width[i*2+2];
         }
     }
-    void lazy_propagate(int p) {
-        if (lazy[p] > 0) {
-            val[p] += lazy[p] * width[p];
-            if (p < size-1) {
-                lazy[p*2+1] += lazy[p];
-                lazy[p*2+2] += lazy[p];
-            }
-            lazy[p] = 0;
+    void lazy_propagate(int k) {
+        val[k] += lazy[k] * width[k];
+        if (k < n-1) {
+            lazy[k*2+1] += lazy[k];
+            lazy[k*2+2] += lazy[k];
         }
+        lazy[k] = 0;
     }
+    void add(int a, int b, int k, int l, int r, int x) {
+        lazy_propagate(k);
 
-    void add(int wishl, int wishr, int watchl, int watchr, int k, int x) {
-        if (wishr <= watchl || watchr <= wishl) {
-            lazy_propagate(k);
+        if (b <= l || r <= a) {
             return;
         }
-        if (wishl <= watchl && watchr <= wishr) {
+        if (a <= l && r <= b) {
             lazy[k] += x;
             lazy_propagate(k);
             return;
         }
-        int mid = (watchl+watchr)/2;
-        lazy_propagate(k);
-        add(wishl, wishr, watchl, mid, k*2+1, x);
-        add(wishl, wishr, mid, watchr, k*2+2, x);
+        int mid = (l+r)/2;
+        add(a, b, k*2+1, l, mid, x);
+        add(a, b, k*2+2, mid, r, x);
         val[k] = val[k*2+1] + val[k*2+2];
     }
-    void add(int wishl, int wishr, int x) {
-        add(wishl, wishr, 0, size, 0, x);
+
+    void add(int a, int b, int x) {
+        add(a, b, 0, 0, n, x);
     }
 
-    long long getsum(int wishl, int wishr, int watchl, int watchr, int k) {
-        if (wishr <= watchl || watchr <= wishl) {
+    T get_sum(int a, int b, int k, int l, int r) {
+        lazy_propagate(k);
+
+        if (b <= l || r <= a) {
             return 0;
         }
-        if (wishl <= watchl && watchr <= wishr) {
-            lazy_propagate(k);
+        if (a <= l && r <= b) {
             return val[k];
         }
-        int mid = (watchl+watchr)/2;
-        lazy_propagate(k);
-        long long sl = getsum(wishl, wishr, watchl, mid, k*2+1);
-        long long sr = getsum(wishl, wishr, mid, watchr, k*2+2);
+        int mid = (l+r)/2;
+        T sl = get_sum(a, b, k*2+1, l, mid);
+        T sr = get_sum(a, b, k*2+2, mid, r);
         return sl + sr;
     }
-    long long getsum(int wishl, int wishr) {
-        return getsum(wishl, wishr, 0, size, 0);
+
+    T get_sum(int a, int b) {
+        return get_sum(a, b, 0, 0, n);
     }
 };
-
 
 int main() {
 #ifdef LOCAL
@@ -145,7 +143,7 @@ int main() {
 
     g.dfs();
 
-    auto segtree = SegTree(g.euler_tour.size());
+    auto segtree = LazySegmentTree<ll>(g.euler_tour.size());
 
     REP(i, Q){
         int p, x;
@@ -155,10 +153,10 @@ int main() {
 
     ll ans;
     REP(i, N-1){
-        ans = segtree.getsum(g.begin_indices[i], g.begin_indices[i]+1);
+        ans = segtree.get_sum(g.begin_indices[i], g.begin_indices[i]+1);
         cout << ans << " ";
     }
-    ans = segtree.getsum(g.begin_indices[N-1], g.begin_indices[N-1]+1);
+    ans = segtree.get_sum(g.begin_indices[N-1], g.begin_indices[N-1]+1);
     cout << ans << endl;
 
     return 0;

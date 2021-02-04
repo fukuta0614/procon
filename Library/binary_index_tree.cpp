@@ -2,7 +2,7 @@
 // Created by 福田圭佑 on 2019/08/18.
 //
 
-// 1-index
+// 0-index
 struct BIT {
     int sz;
     vector<int> tree;
@@ -13,6 +13,7 @@ struct BIT {
     }
 
     ll sum(int i){
+        i++;
         ll sm = 0;
         while (i > 0){
             sm += tree[i];
@@ -22,6 +23,7 @@ struct BIT {
     }
 
     void add(int i, int x){
+        i++;
         while (i <= sz){
             tree[i] += x;
             i += i & -i;

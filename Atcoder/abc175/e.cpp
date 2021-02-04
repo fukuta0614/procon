@@ -30,44 +30,31 @@ int main() {
 #endif
     int R, C, K;
     cin >> R >> C >> K;
-    vector<vector<P>> items(R);
+    vector<vector<ll>> items(R, vector<ll>(C, 0));
     REP(i, K){
         int r, c, v;
         cin >> r >> c >> v;
         r--; c--;
-        items[r].emplace_back(c, v);
+        items[r][c] = v;
     }
 
-    REP(i, R) sort(ALL(items[i]));
+    vector<vector<vector<ll>>> dp(R, vector<vector<ll>>(C, vector<ll>(4, 0)));
+    REP(i, R) REP(j, C) {
 
-    vector<vector<ll>> dp(C, vector<ll>(4, 0));
-    REP(i, R){
-        auto prev = dp;
-        dp.assign(C, vector<ll>(4, 0));
-        print(i);
-        REP(j, C){
-            print(j);
-            int idx = 0;
-            dp[j][0] = *max_element(ALL(prev[j]));
+        if (i>0) dp[i][j][0] = *max_element(ALL(dp[i-1][j]));
+        dp[i][j][1] = dp[i][j][0] + items[i][j];
 
-            if (idx < items[i].size() && items[i][idx].first == j){
-
-                while (items[i][idx].first == j){
-                    REPN(k, 1, 4){
-                        dp[j][k] = max(dp[j][k], dp[j][k-1] + items[i][idx].second);
-                    }
-                    idx++;
-                }
-
-            } else {
-                REPN(k, 1, 4){
-                    dp[j][k] = dp[j-1][k];
-                }
+        if (j>0){
+            REPN(k, 1, 4){
+                dp[i][j][k] = max(dp[i][j][k], dp[i][j-1][k]);
+                dp[i][j][k] = max(dp[i][j][k], dp[i][j-1][k-1] + items[i][j]);
             }
         }
     }
-    print(dp);
+//    REP(i, R) print(dp[i]);
 
+    ll ans = *max_element(ALL(dp[R-1][C-1]));
+    print(ans);
 
     return 0;
 }

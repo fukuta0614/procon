@@ -28,7 +28,7 @@ map<ll, int> factorize(ll n){
 
 vector<ll> get_divisors(ll n){
     vector<ll> res;
-    for (int i = 1; i * i <= n; i++){
+    for (ll i = 1; i * i <= n; i++){
         if (i * i == n){
             res.emplace_back(i);
             break;
@@ -42,9 +42,15 @@ vector<ll> get_divisors(ll n){
     return res;
 }
 
-int gcd(int a,int b){return b?gcd(b,a%b):a;}
+ll gcd(ll a,ll b){return b?gcd(b,a%b):a;}
+
+ll lcm(ll a, ll b) { return a * b / gcd(a, b);}
 
 int bit_count(unsigned int bits) { int cnt = 0; for(unsigned int mask=1;mask!=0;mask<<=1){if((bits&mask)!=0) ++cnt; }return cnt; }
+
+string to_hex(int n){ std::stringstream ss; ss << std::hex << n; return ss.str(); }
+string to_oct(int n){ std::stringstream ss; ss << std::oct << n; return ss.str(); }
+string to_bin(int n){ std::stringstream ss; ss << std::bitset<8>(n); return ss.str(); }
 
 int dx[8]={ 1, 0, -1, 0, -1, 1, -1, 1};
 int dy[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
