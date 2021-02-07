@@ -1,4 +1,4 @@
-// abc190_d
+// abc191_f
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -40,32 +40,34 @@ vector<ll> get_divisors(ll n){
     return res;
 }
 
+ll gcd(ll a,ll b){return b?gcd(b,a%b):a;}
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ll N;
+    int N;
     cin >> N;
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
 
-    auto res = get_divisors(2 * N);
-
-    int ans = 0;
-    for (auto d: res){
-        ll x = d, y = 2*N/d;
-
-        if ((x + y - 1) % 2 == 0 || (x - y + 1) % 2 == 0){
-            ll a = (x - y + 1) / 2;
-            ll b = (x + y - 1) / 2;
-            if (b >= a){
-//                print(d, x, y, a, b);
-                ans++;
-            }
+    unordered_map<int, int> mp;
+    REP(i, N){
+        auto ds = get_divisors(A[i]);
+        for (auto d: ds){
+            mp[d] = gcd(mp[d], A[i]);
         }
     }
 
-    print(ans);
+    int mn = *min_element(ALL(A));
 
+    int ans = 0;
+    for (auto [d, n] : mp){
+        if (d == n && d <= mn) ans++;
+    }
+
+    print(ans);
 
     return 0;
 }

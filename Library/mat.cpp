@@ -68,7 +68,8 @@ int gauss_jordan(Mat<T>& A, bool is_extended=true){
 
         // 対象行を1にする
         swap(A[pivot], A[rank]);
-        REP(c, A.n) A[rank][c] /= A[rank][col];
+        T x = A[rank][col];
+        REP(c, A.n) A[rank][c] /= x;
 
         // 対象行以外を0にする
         REP(row, A.m) if (row != rank && A[row][col]){

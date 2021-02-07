@@ -1,4 +1,4 @@
-// abc190_d
+// abc191_d
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -24,48 +24,48 @@ template<class T> void print(const T& x){cout << x << "\n";}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-vector<ll> get_divisors(ll n){
-    vector<ll> res;
-    for (ll i = 1; i * i <= n; i++){
-        if (i * i == n){
-            res.emplace_back(i);
-            break;
-        }
-        if (n % i == 0){
-            res.emplace_back(i);
-            res.emplace_back(n / i);
-        }
-    }
-    sort(ALL(res));
-    return res;
-}
-
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ll N;
-    cin >> N;
+    long double X, Y, R;
+    cin >> X >> Y >> R;
 
-    auto res = get_divisors(2 * N);
+    ll left = ll(X - R);
+    ll right = ll(X + R);
 
-    int ans = 0;
-    for (auto d: res){
-        ll x = d, y = 2*N/d;
+//    print(left, right);
 
-        if ((x + y - 1) % 2 == 0 || (x - y + 1) % 2 == 0){
-            ll a = (x - y + 1) / 2;
-            ll b = (x + y - 1) / 2;
-            if (b >= a){
-//                print(d, x, y, a, b);
-                ans++;
-            }
+    ll ans = 0;
+    REPN(x, left, right+1){
+
+        long double t = sqrt(R*R - (X - x)*(X - x));
+        ll up = (ll)floor(Y + t);
+
+        if ((X - x)*(X - x) + (up+1 - Y) * (up+1 - Y) <= R*R){
+            up++;
         }
+
+        if ((X - x)*(X - x) + (up - Y) * (up - Y) > R*R){
+            up--;
+        }
+
+        ll down = (ll) ceil(Y - t);
+
+        if ((X - x)*(X - x) + (down-1- Y) * (down-1 - Y) <= R*R){
+            down--;
+        }
+
+        if ((X - x)*(X - x) + (down - Y) * (down - Y) > R*R){
+            down++;
+        }
+//        print(x, up, down);
+
+        ans += up - down + 1;
     }
 
     print(ans);
-
 
     return 0;
 }

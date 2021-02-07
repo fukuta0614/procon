@@ -1,7 +1,6 @@
-// abc190_d
 #include <bits/stdc++.h>
 #ifdef LOCAL
-#include "../cxx-prettyprint/prettyprint.hpp"
+#include "cxx-prettyprint/prettyprint.hpp"
 #endif
 using namespace std;
 
@@ -22,50 +21,54 @@ typedef pair<int, int> P;
 #define print_line(vec, n) {for(int idx=0;idx<(n-1);idx++) cout << (vec)[idx] << " "; cout << (vec)[(n)-1] << endl;}
 template<class T> void print(const T& x){cout << x << "\n";}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
-struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
+//struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-vector<ll> get_divisors(ll n){
-    vector<ll> res;
-    for (ll i = 1; i * i <= n; i++){
-        if (i * i == n){
-            res.emplace_back(i);
-            break;
-        }
-        if (n % i == 0){
-            res.emplace_back(i);
-            res.emplace_back(n / i);
-        }
+ostream& operator<<(ostream& os, const __int128& x) {
+    ll a = (ll) (x / 1000000000000000000ll);
+    ll b = (ll) (x % 1000000000000000000ll);
+    if (a != 0){
+        os << a << b;
+    } else {
+        os << b;
     }
-    sort(ALL(res));
-    return res;
+    return os;
 }
+
 
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ll N;
-    cin >> N;
+    int N = 100;
+    int M = 50;
 
-    auto res = get_divisors(2 * N);
+    vector<int> A(N);
+    REP(i, N) A[i] = (i+1)*(i+1);
 
-    int ans = 0;
-    for (auto d: res){
-        ll x = d, y = 2*N/d;
+    ll mx = 0;
+    REP(i, M) mx += A[N-i-1];
 
-        if ((x + y - 1) % 2 == 0 || (x - y + 1) % 2 == 0){
-            ll a = (x - y + 1) / 2;
-            ll b = (x + y - 1) / 2;
-            if (b >= a){
-//                print(d, x, y, a, b);
-                ans++;
+    print("max", mx);
+
+    vector<vector<ll>> dp(M+1, vector<ll>(mx+1));
+    dp[0][0] = 1;
+    REP(i, N){
+        REPN_REV(j, 1, min(i+2, M+1)){
+            REPN(k, A[i], mx+1){
+                dp[j][k] += dp[j-1][k - A[i]];
             }
         }
+        print(i);
     }
 
-    print(ans);
-
+    ll ans = 0;
+    REP(k, mx+1) {
+        if (dp[M][k] == 1){
+            ans += k;
+        }
+    }
+    print("ans", ans);
 
     return 0;
 }

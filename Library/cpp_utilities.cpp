@@ -18,6 +18,18 @@ typedef pair<int, P> PP;
 #define INF ((1 << 29)-1)
 #define MOD (1000000007)
 
+// int128のprint
+ostream& operator<<(ostream& os, const __int128& x) {
+    ll a = (ll) (x / 1000000000000000000ll);
+    ll b = (ll) (x % 1000000000000000000ll);
+    if (a != 0){
+        os << a << b;
+    } else {
+        os << b;
+    }
+    return os;
+}
+
 map<ll, int> factorize(ll n){
     ll tmp = n;
     map<ll, int> res;
@@ -66,6 +78,8 @@ struct EratosthenesSieve{
     }
 };
 
+// 何度も素因数分解を行う場合の高速版
+// エラトステネスの篩っぽく、その整数を割る最小の整数を配列として格納する
 struct FastFactorization{
     vector<int> smallest_divisor;
 

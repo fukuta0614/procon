@@ -34,7 +34,7 @@ struct mint {
     mint operator/(const mint& a) const { mint res(*this); return res/=a; }
     mint operator/(const int& a) const { mint res(*this); return res/=a; }
 
-    friend ostream& operator<<(ostream& os, const mint& m) {cout << m.x; return os;}
+    friend ostream& operator<<(ostream& os, const mint& m) {os << m.x; return os;}
     friend istream& operator>>(istream& is, mint& m) { return is >> m.x; }
 };
 

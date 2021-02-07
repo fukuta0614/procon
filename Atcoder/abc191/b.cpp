@@ -1,4 +1,4 @@
-// abc190_d
+// abc191_b
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -24,48 +24,28 @@ template<class T> void print(const T& x){cout << x << "\n";}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
 struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
-vector<ll> get_divisors(ll n){
-    vector<ll> res;
-    for (ll i = 1; i * i <= n; i++){
-        if (i * i == n){
-            res.emplace_back(i);
-            break;
-        }
-        if (n % i == 0){
-            res.emplace_back(i);
-            res.emplace_back(n / i);
-        }
-    }
-    sort(ALL(res));
-    return res;
-}
-
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    ll N;
-    cin >> N;
+    int N, X;
+    cin >> N >> X;
+    vector<int> A(N);
+    REP(i, N) cin >> A[i];
 
-    auto res = get_divisors(2 * N);
+    vector<int> ans;
 
-    int ans = 0;
-    for (auto d: res){
-        ll x = d, y = 2*N/d;
-
-        if ((x + y - 1) % 2 == 0 || (x - y + 1) % 2 == 0){
-            ll a = (x - y + 1) / 2;
-            ll b = (x + y - 1) / 2;
-            if (b >= a){
-//                print(d, x, y, a, b);
-                ans++;
-            }
+    REP(i, N){
+        if (A[i] != X){
+            ans.emplace_back(A[i]);
         }
     }
 
-    print(ans);
-
-
+    if (ans.size() > 0){
+        print_line(ans, ans.size());
+    } else {
+        print("");
+    }
     return 0;
 }
