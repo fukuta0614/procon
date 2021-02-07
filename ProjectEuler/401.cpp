@@ -1,3 +1,5 @@
+#pragma GCC optimize ("O3")
+
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "cxx-prettyprint/prettyprint.hpp"
@@ -89,8 +91,14 @@ ll f(ll n){
     return n*(n+1)*(2*n+1)/6;
 }
 
-mint f(mint n){
-    return n*(n+1)*(2*n+1)/6;
+mint f2(ll n){
+    vector<ll> x{n, n+1, 2*n+1};
+    REP(i, 3) if (x[i] % 2 == 0) x[i] /= 2;
+    REP(i, 3) if (x[i] % 3 == 0) x[i] /= 3;
+
+    mint ret = 1;
+    REP(i, 3) ret *= mint(x[i]);
+    return ret;
 }
 
 mint func_opt(ll n){
@@ -99,10 +107,10 @@ mint func_opt(ll n){
 
     mint ret = 0;
     for (ll k = 1; k <= s; k++){
-        ret += f(mint(n/k)) + mint(k)*mint(k)*mint(n/k);
+        ret += f2(n/k) + mint(k)*mint(k)*mint(n/k);
     }
 
-    ret -= mint(s) * f(mint(s));
+    ret -= mint(s) * f2(s);
 
     return ret;
 }
@@ -116,18 +124,8 @@ int main() {
 //        print(func(i), func_opt(i));
 //    }
 
-    mint n = 2;
-    mint x = n * (n+1) * (n*2+1);
-    print(x);
-    x /= 6;
-    print(x);
-
-//    REPN(i, 1, 10){
-//        print(f(mint(i)), f(i));
-//    }
-//    mint ans = func_opt((ll)1e15);
-//    print(ans);
+    mint ans = func_opt((ll)1e15);
+    print(ans);
 
     return 0;
 }
-//989769364

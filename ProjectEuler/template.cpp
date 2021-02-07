@@ -1,3 +1,5 @@
+#pragma GCC optimize ("O3")
+
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "cxx-prettyprint/prettyprint.hpp"
