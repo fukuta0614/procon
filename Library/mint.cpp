@@ -5,39 +5,61 @@
 const int mod = 1e9 + 7;
 struct mint {
     ll x;
-    mint(ll a=0){x = a>=0 ? a%mod : mod-(-a)%mod;}
-    mint(const mint& m):x(m.x){}
+    mint() : x(0) {}
+    template < class T, std::enable_if_t<std::is_integral_v<T> && std::is_signed_v<T>, std::nullptr_t> = nullptr >
+    mint(T v) {x = static_cast<ll>(v % mod); if (x < 0) x += mod;}
+    template < class T, std::enable_if_t<std::is_integral_v<T> && std::is_unsigned_v<T>, std::nullptr_t> = nullptr >
+    mint(T v) {x = static_cast<ll>(v % mod);}
+
+    mint& operator++() { x++; if (x == mod) x = 0; return *this;}
+    mint& operator--() { if (x == 0) x = mod; x--; return *this;}
+    mint operator++(int) { mint result = *this; ++*this; return result;}
+    mint operator--(int) { mint result = *this; --*this; return result;}
+
+    mint operator+() const { return *this; }
+    mint operator-() const { return mint(0)-*this;}
+    explicit operator bool() const {return x>0;}
+
     mint& operator+=(const mint& a) { if ((x += a.x) >= mod) x -= mod; return *this; }
-    mint& operator+=(const int& a) { if ((x += a) >= mod) x -= mod; return *this; }
     mint& operator-=(const mint& a) { if ((x += mod-a.x) >= mod) x -= mod; return *this; }
-    mint& operator-=(const int& a) { if ((x += mod-a) >= mod) x -= mod; return *this; }
     mint& operator*=(const mint& a) { (x *= a.x) %= mod; return *this; }
-    mint& operator*=(const int& a) { (x *= a) %= mod; return *this; }
-    mint operator+(const mint& a) const { mint res(*this); return res+=a; }
-    mint operator+(const int& a) const { mint res(*this); return res+=a; }
-    mint operator-(const mint& a) const { mint res(*this); return res-=a; }
-    mint operator-(const int& a) const { mint res(*this); return res-=a; }
-    mint operator-() const {mint res(*this); return mint(0)-res;}
-    mint operator*(const mint& a) const { mint res(*this); return res*=a; }
-    mint operator*(const int& a) const { mint res(*this); return res*=a; }
-    bool operator==(const mint& a) const { return x == a.x;}
-    bool operator==(const int& a) const { return x == a;}
-    bool operator!=(const mint& a) const { return x != a.x;}
-    bool operator!=(const int& a) const { return x != a;}
-    operator bool() const {return x>0;}
 
     mint pow(ll t) const {mint r=1,a=*this; do{if(t&1)r*=a;a*=a;}while(t>>=1);return r;}
-    mint pow(mint t) const {mint r=1,a=*this; do{if(t.x&1)r*=a;a*=a;}while(t.x>>=1);return r;}
     mint inv() const { return pow(mod-2); }
     mint& operator/=(const mint& a) { return (*this) *= a.inv(); }
-    mint& operator/=(const int& a) { return (*this) *= mint(a).inv(); }
-    mint operator/(const mint& a) const { mint res(*this); return res/=a; }
-    mint operator/(const int& a) const { mint res(*this); return res/=a; }
+
+    friend bool operator==(const mint& lhs, const mint& rhs) { return lhs.x == rhs.x;}
+    friend bool operator!=(const mint& lhs, const mint& rhs) { return lhs.x != rhs.x;}
+
+    friend mint operator+(const mint& lhs, const mint& rhs) { return mint(lhs) += rhs; }
+    friend mint operator-(const mint& lhs, const mint& rhs) { return mint(lhs) -= rhs; }
+    friend mint operator*(const mint& lhs, const mint& rhs) { return mint(lhs) *= rhs; }
+    friend mint operator/(const mint& lhs, const mint& rhs) { return mint(lhs) /= rhs; }
 
     friend ostream& operator<<(ostream& os, const mint& m) {os << m.x; return os;}
     friend istream& operator>>(istream& is, mint& m) { return is >> m.x; }
 };
 
+
+//ll extgcd(ll a, ll b, ll& x, ll& y) const { ll d = a; if(b != 0){ d = extgcd(b, a%b, y, x); y -= (a/b) * x; } else{ x = 1; y = 0; } return d; }
+//
+//mint& operator/=(const mint& a) {
+//    ll d = gcd(x, a.x);
+//    d = gcd(d, mod);
+//    ll p = x / d;
+//    ll q = a.x / d;
+//    ll mod2 = mod / d;
+//    print(x, a.x, d, p, q, mod2);
+//
+//    assert(gcd(p, mod2) == 1);
+//
+//    ll s, t;
+//    extgcd(q, mod2, s, t);
+//    ll q_inv = (mod2 + s%mod2) % mod2;
+//
+//    x = (p * q_inv) % mod2;
+//    return *this;
+//}
 
 // 階乗
 struct Factorial {

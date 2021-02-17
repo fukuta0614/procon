@@ -1,17 +1,21 @@
+#pragma GCC optimize ("O3")
+
 #include <bits/stdc++.h>
 #ifdef LOCAL
-#include "../cxx-prettyprint/prettyprint.hpp"
+#include "../../debug_util/cxx-prettyprint/prettyprint.hpp"
+#include "../../debug_util/rng.hpp"
+#include "../../debug_util/timer.hpp"
 #endif
 using namespace std;
 
-typedef long long ll;
-typedef unsigned long long ull;
-typedef pair<int, int> P;
+using ll = long long;
+using ull = unsigned long long;
+using P = pair<int, int>;
 
-#define REP(i, n) for (int (i) = 0 ; (i) < (int)(n) ; ++(i))
-#define REPN(i, m, n) for (int (i) = m ; (i) < (int)(n) ; ++(i))
-#define REP_REV(i, n) for (int (i) = (int)(n) - 1 ; (i) >= 0 ; --(i))
-#define REPN_REV(i, m, n) for (int (i) = (int)(n) - 1 ; (i) >= m ; --(i))
+#define REP(i, n) for (int i = 0 ; i < (int)(n) ; ++i)
+#define REPN(i, m, n) for (int i = m ; i < (int)(n) ; ++i)
+#define REP_REV(i, n) for (int i = (int)(n) - 1 ; i >= 0 ; --i)
+#define REPN_REV(i, m, n) for (int i = (int)(n) - 1 ; i >= m ; --i)
 #define ALL(x) x.begin(), x.end()
 
 #define INF (ll)(1e9)

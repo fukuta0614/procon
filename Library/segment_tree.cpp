@@ -40,6 +40,11 @@ struct SegmentTree {
     }
 };
 
+//auto f = [](ll a, ll b){return max(a, b);};
+//ll ti = 0;
+//auto segtree = SegmentTree<ll>(f, ti, N);
+
+
 // 区間add, 区間sum
 template<typename T>
 struct LazySegmentTree{
@@ -108,10 +113,72 @@ struct LazySegmentTree{
     }
 };
 
-
-// starry sky
+// 区間add, 区間max
 template<typename T>
-struct LazySegmentTree{ // 区間add, 区間min
+struct LazySegmentTree{
+    int n;
+    vector<T> val;
+    vector<T> lazy;
+
+    explicit LazySegmentTree(int n_){
+        n = 1;
+        while (n < n_) n <<= 1;
+
+        val = vector<T>(n<<1, 0);
+        lazy = vector<T>(n<<1, 0);
+    }
+    void lazy_propagate(int k) {
+        val[k] += lazy[k];
+        if (k < n-1) {
+            lazy[k*2+1] += lazy[k];
+            lazy[k*2+2] += lazy[k];
+        }
+        lazy[k] = 0;
+    }
+    void add(int a, int b, int k, int l, int r, int x) {
+        lazy_propagate(k);
+
+        if (b <= l || r <= a) {
+            return;
+        }
+        if (a <= l && r <= b) {
+            lazy[k] += x;
+            lazy_propagate(k);
+            return;
+        }
+        int mid = (l+r)/2;
+        add(a, b, k*2+1, l, mid, x);
+        add(a, b, k*2+2, mid, r, x);
+        val[k] = max(val[k*2+1], val[k*2+2]);
+    }
+
+    void add(int a, int b, int x) {
+        add(a, b, 0, 0, n, x);
+    }
+
+    T get_max(int a, int b, int k, int l, int r) {
+        lazy_propagate(k);
+
+        if (b <= l || r <= a) {
+            return 0;
+        }
+        if (a <= l && r <= b) {
+            return val[k];
+        }
+        int mid = (l+r)/2;
+        T sl = get_max(a, b, k*2+1, l, mid);
+        T sr = get_max(a, b, k*2+2, mid, r);
+        return max(sl, sr);
+    }
+
+    T get_max(int a, int b) {
+        return get_max(a, b, 0, 0, n);
+    }
+};
+
+// 区間add, 区間min (starry sky)
+template<typename T>
+struct LazySegmentTree{
     int n;
     vector<T> val;
     vector<T> lazy;

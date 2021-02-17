@@ -66,6 +66,7 @@ string to_bin(int n){ std::stringstream ss; ss << std::bitset<8>(n); return ss.s
 
 int dx[8]={ 1, 0, -1, 0, -1, 1, -1, 1};
 int dy[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
+bool bound_check(int i, int j, int N, int M) {return (0 <= i) && (i < N) && (0 <= j) && (j < M);}
 
 struct EratosthenesSieve{
     vector<bool> is_prime;
@@ -108,6 +109,19 @@ bool is_prime(int n){
     for (int a=2; a*a <= n; a++) if (n % a == 0) return false;
     return true;
 }
+
+struct CombinationGenerator {
+    ll sup, ret;
+    bool first;
+    CombinationGenerator(int n, int k): sup(1ll<<n), ret((1ll<<k)-1) {first = true;}
+    ll operator()(){
+        if (first) {first = false; return ret;}
+        if (ret == 0) return -1;
+        ll x = ret & -ret, y = ret + x;
+        ret = ((ret & ~y) / x >> 1) | y;
+        return ret < sup ? ret : -1;
+    }
+};
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 template<class T> void print(const T& x){cout << x << endl;}

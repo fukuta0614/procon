@@ -2,7 +2,9 @@
 
 #include <bits/stdc++.h>
 #ifdef LOCAL
-#include "cxx-prettyprint/prettyprint.hpp"
+#include "../debug_util/cxx-prettyprint/prettyprint.hpp"
+#include "../debug_util/rng.hpp"
+#include "../debug_util/timer.hpp"
 #endif
 using namespace std;
 

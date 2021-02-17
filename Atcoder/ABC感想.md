@@ -605,6 +605,11 @@ ford-fulkersonのアルゴリズム
             - cur & A[r] == 0であるかぎり、rを伸ばして良い
             - ==1になったら、cur ^= A[l] で lを伸ばせる             
 
+### abc099
+
+- D Good Grid
+    - 
+
 ### abc100
 
 - C	*3 or /2
