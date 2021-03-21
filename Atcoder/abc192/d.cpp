@@ -33,6 +33,53 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string X;
+    ll M;
+    cin >> X >> M;
+
+    if (X.size() == 1){
+        int n = stoi(X);
+        if (n > M){
+            print(0);
+        } else {
+//            assert(false);
+            print(1);
+        }
+        return 0;
+    }
+
+    int N = X.size();
+
+    int d = 0;
+    for (auto c: X) d = max(d, c - '0');
+
+    __int128 ok = 0;
+    __int128 ng = M+1;
+
+    while (ng - ok > 1){
+        __int128 x = (ok + ng) / 2;
+
+        bool valid = true;
+
+        __int128 tmp = 0;
+        REP(i, N){
+            tmp = x * tmp + X[i] - '0';
+            if (tmp > M){
+                valid = false;
+                break;
+            }
+        }
+//        print((ll)x, (ll)tmp);
+
+        if (valid){
+            ok = x;
+        } else {
+            ng = x;
+        }
+    }
+
+    ll ans = (ll)ok - d;
+    print(ans <= 0 ? 0 : ans);
 
     return 0;
 }

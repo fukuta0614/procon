@@ -41,14 +41,10 @@ map<ll, int> factorize(ll n){
 vector<ll> get_divisors(ll n){
     vector<ll> res;
     for (ll i = 1; i * i <= n; i++){
-        if (i * i == n){
-            res.emplace_back(i);
-            break;
-        }
-        if (n % i == 0){
-            res.emplace_back(i);
-            res.emplace_back(n / i);
-        }
+        if (n % i != 0) continue;
+        res.emplace_back(i);
+        if (n / i == i) continue;
+        res.emplace_back(n / i);
     }
     sort(ALL(res));
     return res;
@@ -57,6 +53,8 @@ vector<ll> get_divisors(ll n){
 ll gcd(ll a,ll b){return b?gcd(b,a%b):a;}
 
 ll lcm(ll a, ll b) { return a * b / gcd(a, b);}
+
+ll extgcd(ll a, ll b, ll& x, ll& y) { ll d = a; if(b != 0){ d = extgcd(b, a%b, y, x); y -= (a/b) * x; } else{ x = 1; y = 0; } return d; }
 
 int bit_count(unsigned int bits) { int cnt = 0; for(unsigned int mask=1;mask!=0;mask<<=1){if((bits&mask)!=0) ++cnt; }return cnt; }
 
@@ -110,6 +108,18 @@ bool is_prime(int n){
     return true;
 }
 
+int euler_phi(int n){
+    int res = n;
+    for (int i = 2; i * i <= n; ++i) {
+        if (n % i == 0){
+            res = res / i * (i-1);
+            for (; n % i == 0; n /= i);
+        }
+    }
+    if (n != 1) res = res / n * (n - 1);
+    return res;
+}
+
 struct CombinationGenerator {
     ll sup, ret;
     bool first;
@@ -122,6 +132,49 @@ struct CombinationGenerator {
         return ret < sup ? ret : -1;
     }
 };
+
+//    CombinationGenerator g(n, r);
+//    ll mask;
+//    while ((mask = g()) >= 0){
+//        ll tmp = 1;
+//        REP(i, n) if (mask & (1 << i)) {
+//            tmp *= cnt[i];
+//        }
+//        ans += tmp;
+//    }
+
+
+// 負の数にも対応した mod
+// 例えば -17 を 5 で割った余りは本当は 3 (-17 ≡ 3 (mod. 5))
+// しかし単に -17 % 5 では -2 になってしまう
+inline long long mod(long long a, long long m) {
+    return (a % m + m) % m;
+}
+
+// 拡張 Euclid の互除法
+// ap + bq = gcd(a, b) となる (p, q) を求め、d = gcd(a, b) をリターンします
+long long extGcd(long long a, long long b, long long &p, long long &q) {
+    if (b == 0) { p = 1; q = 0; return a; }
+    long long d = extGcd(b, a%b, q, p);
+    q -= a/b * p;
+    return d;
+}
+
+// 中国剰余定理
+// リターン値を (r, m) とすると解は x ≡ r (mod. m)
+// 解なしの場合は (0, -1) をリターン
+pair<long long, long long> ChineseRem(const vector<long long> &b, const vector<long long> &m) {
+    long long r = 0, M = 1;
+    for (int i = 0; i < (int)b.size(); ++i) {
+        long long p, q;
+        long long d = extGcd(M, m[i], p, q); // p is inv of M/d (mod. m[i]/d)
+        if ((b[i] - r) % d != 0) return make_pair(0, -1);
+        long long tmp = (b[i] - r) / d * p % (m[i]/d);
+        r += M * tmp;
+        M *= m[i]/d;
+    }
+    return make_pair(mod(r, M), M);
+}
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
 template<class T> void print(const T& x){cout << x << endl;}

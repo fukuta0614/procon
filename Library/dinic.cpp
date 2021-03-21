@@ -7,10 +7,11 @@
 template <typename T = long long>
 struct Dinic {
     struct edge { int to; T cap; int rev; };
-    vector<vector<edge>> G;
-    vector<int> itr, level;
+
     int n;
+    vector<vector<edge>> G;
     T inf;
+    vector<int> itr, level;
 
     explicit Dinic(int n): n(n), G(n) {inf=numeric_limits<T>::max();}
 

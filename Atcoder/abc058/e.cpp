@@ -1,4 +1,4 @@
-// abc058_e
+// arc071_e
 #include <bits/stdc++.h>
 #ifdef LOCAL
 #include "../cxx-prettyprint/prettyprint.hpp"
@@ -28,6 +28,49 @@ int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
+
+    string S, T;
+    cin >> S >> T;
+    int q;
+    cin >> q;
+
+    vector<int> cumsum_s_a(S.size()+1);
+    vector<int> cumsum_s_b(S.size()+1);
+    REP(i, S.size()){
+        cumsum_s_a[i+1] = cumsum_s_a[i] + (S[i] == 'A');
+        cumsum_s_b[i+1] = cumsum_s_b[i] + (S[i] == 'B');
+    }
+
+    vector<int> cumsum_t_a(T.size()+1);
+    vector<int> cumsum_t_b(T.size()+1);
+    REP(i, T.size()){
+        cumsum_t_a[i+1] = cumsum_t_a[i] + (T[i] == 'A');
+        cumsum_t_b[i+1] = cumsum_t_b[i] + (T[i] == 'B');
+    }
+
+    while (q--){
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
+        a--; b--; c--; d--;
+
+//        print(S.substr(a, b-a+1), T.substr(c, d-c+1));
+
+        int s_a = cumsum_s_a[b+1] - cumsum_s_a[a];
+        int s_b = cumsum_s_b[b+1] - cumsum_s_b[a];
+
+        int t_a = cumsum_t_a[d+1] - cumsum_t_a[c];
+        int t_b = cumsum_t_b[d+1] - cumsum_t_b[c];
+
+        int x = s_a + 2 * s_b;
+        int y = t_a + 2 * t_b;
+
+        if (x % 3 == y % 3){
+            print("YES");
+        } else {
+            print("NO");
+        }
+
+    }
 
 
     return 0;

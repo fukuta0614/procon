@@ -33,6 +33,11 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin  >> S;
+
+    sort(ALL(S));
+    print(S == "abc" ? "Yes" : "No");
 
     return 0;
 }

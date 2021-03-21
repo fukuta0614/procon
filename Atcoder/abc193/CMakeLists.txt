@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.1)
+add_definitions(-DLOCAL)
+add_definitions(-ftrapv)
+add_definitions(-D_GLIBCXX_DEBUG)
+project(abc193)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -std=c++17")
+
+include_directories(../../Library/ac-library)
+
+add_executable(abc193_a a.cpp)
+add_executable(abc193_b b.cpp)
+add_executable(abc193_c c.cpp)
+add_executable(abc193_d d.cpp)
+add_executable(abc193_e e.cpp)
+add_executable(abc193_e2 e2.cpp)
+add_executable(abc193_e3 e3.cpp)
+add_executable(abc193_f f.cpp)
+add_executable(abc193_f2 f2.cpp)

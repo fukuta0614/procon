@@ -29,6 +29,28 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+
+    map<string, int> mp;
+    REP(i, N){
+        string s; cin >> s;
+        mp[s]++;
+    }
+
+    int M;
+    cin >> M;
+    REP(i, M){
+        string t; cin >> t;
+        mp[t]--;
+    }
+
+    int ans = 0;
+    for (auto [s, n] : mp){
+        ans = max(ans, n);
+    }
+
+    print(ans);
 
     return 0;
 }

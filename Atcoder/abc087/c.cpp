@@ -29,6 +29,27 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N;
+    cin >> N;
+    vector<vector<int>> A(2, vector<int>(N, 0));
+    REP(i, 2) REP(j, N) cin >> A[i][j];
+
+    vector<vector<int>> cumsum(2, vector<int>(N+1, 0));
+
+    REP(i, 2){
+        REP(j, N){
+            cumsum[i][j+1] = cumsum[i][j] + A[i][j];
+        }
+    }
+
+    ll ans = 0;
+    REP(j, N){
+        ll tmp = cumsum[0][j+1] + cumsum[1][N] - cumsum[1][j];
+        ans = max(tmp, ans);
+    }
+
+    print(ans);
+
 
     return 0;
 }

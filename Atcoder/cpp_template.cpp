@@ -18,7 +18,7 @@ using P = pair<int, int>;
 #define REPN_REV(i, m, n) for (int i = (int)(n) - 1 ; i >= m ; --i)
 #define ALL(x) x.begin(), x.end()
 
-#define INF (ll)(1e9)
+#define INF (ll)(1e15)
 #define MOD (1000000007)
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }

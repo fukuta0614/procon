@@ -33,6 +33,31 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int N, K;
+    cin >> N >> K;
+
+    int n = N;
+    REP(i, K){
+        vector<int> v;
+        while (n){
+            v.emplace_back(n%10);
+            n/=10;
+        }
+        sort(ALL(v));
+
+        int x = 0;
+        int y = 0;
+        REP(j, v.size()){
+            x = 10 * x + v[j];
+            y = 10 * y + v[v.size()-j-1];
+        }
+        n = y - x;
+    }
+    print(n);
+
+
+
+
 
     return 0;
 }

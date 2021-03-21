@@ -37,17 +37,44 @@ int main() {
     map<int, int> mp;
     REP(i, N) mp[A[i]]++;
 
-    vector<int> x;
-    for (auto e: mp) x.emplace_back(e.second);
+    vector<int> X;
+    for (auto e: mp) X.emplace_back(e.second);
 
-    print(x);
+    int M = X.size();
 
-    map<int, int> mp2;
-    for (auto e: x) mp2[e]++;
+    vector<int> nums;
+    ll sm = 0;
+    int idx = 0;
+    REPN(n, 1, N+1){
+        while (idx < M && X[idx] < n){
+            sm += X[idx];
+            idx++;
+        }
+        nums.emplace_back(sm + n * (M - idx));
+    }
 
+    print(nums);
+
+    vector<int> ans(N);
     REPN(k, 1, N+1){
 
+        int ok = 0;
+        int ng = N+1;
+        while (ng - ok > 1){
+            int x = (ok + ng) / 2;
 
+            bool valid;
+            if (nums[x] >= x * k;){
+                ok = x;
+            } else {
+                ng = x;
+            }
+        }
+        ans[k-1] = ok;
+    }
+
+    REP(i, N){
+        print(ans[i]);
     }
 
     return 0;

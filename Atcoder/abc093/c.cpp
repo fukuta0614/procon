@@ -33,6 +33,26 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    vector<int> v(3);
+    REP(i, 3) cin >> v[i];
+    sort(ALL(v));
+    int x = v[0];
+    REP(i, 3) v[i] -= x;
+
+    int ans = 0;
+
+    int a = v[2] - v[1];
+    ans += a;
+
+    int b = v[2] - (v[0] + a);
+
+    if (b % 2 == 0){
+        ans += b / 2;
+    } else {
+        ans += b / 2 + 1 + 1;
+    }
+
+    print(ans);
 
     return 0;
 }

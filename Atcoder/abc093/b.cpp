@@ -18,6 +18,7 @@ using P = pair<int, int>;
 #define REP_REV(i, n) for (int i = (int)(n) - 1 ; i >= 0 ; --i)
 #define REPN_REV(i, m, n) for (int i = (int)(n) - 1 ; i >= m ; --i)
 #define ALL(x) x.begin(), x.end()
+#define UNIQUE(v) v.erase( unique(v.begin(), v.end()), v.end() );
 
 #define INF (ll)(1e9)
 #define MOD (1000000007)
@@ -33,6 +34,18 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int A, B, K;
+    cin >> A >> B >> K;
+
+    vector<int> ans;
+    REP(i, K){
+        ans.emplace_back(min(B, A+i));
+        ans.emplace_back(max(A, B-i));
+    }
+    sort(ALL(ans));
+    UNIQUE(ans);
+
+    REP(i, ans.size()) print(ans[i]);
 
     return 0;
 }

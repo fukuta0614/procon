@@ -59,10 +59,8 @@ int main() {
 
     ll ans = 0;
     CombinationGenerator g(5, 3);
-    while (true){
-        ll mask = g();
-        if (mask < 0) break;
-
+    ll mask;
+    while ((mask = g()) >= 0){
         ll tmp = 1;
         REP(p, 5) if (mask & (1 << p)) {
             tmp *= cnt[p];

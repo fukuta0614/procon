@@ -1,9 +1,9 @@
 
-from itertools import combinations
-from itertools import product
-import bisect
-import math
 
-N = int(input())
-N, K = [int(_) for _ in input().split()]
-T = [[int(_) for _ in input().split()] for i in range(N)]
+N = input()
+if '.' in N:
+    ans = N.split(".")[0]
+else:
+    ans = N
+
+print(ans)

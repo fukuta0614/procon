@@ -39,7 +39,8 @@ head = ["cmake_minimum_required(VERSION {})\n".format(version),
         "add_definitions(-ftrapv)\n",
         "add_definitions(-D_GLIBCXX_DEBUG)\n",
         "project({})\n".format(contest_name),
-        'set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -std=c++17")\n',
+        'set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g -fsanitize=undefined -Wall -std=c++17")\n',
+        "include_directories(../../Library/ac-library)",
         "\n"]
 
 executable = ["{}_{}".format(contest_name, q) for q in questions]  # ex) ABC104_C

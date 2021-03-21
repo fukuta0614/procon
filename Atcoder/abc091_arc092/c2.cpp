@@ -19,9 +19,6 @@ int main() {
     int N, x, y;
     cin >> N;
 
-    int s = 0;
-    int t = 2 * N + 1;
-
     vector<pair<int, int>> reds;
     vector<pair<int, int>> blues;
 

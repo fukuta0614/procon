@@ -38,24 +38,36 @@ int main() {
     while (Q--){
         ll A, B;
         cin >> A >> B;
+        if (A > B) swap(A, B);
 
-        ll X = A * B;
-        print(int(sqrt(X)));
-        print("A", A);
-        set<int> a;
-        REPN(i, 1, A){
-            print(i, (X-1) / i);
-            a.emplace((X-1)/i);
+        // 1-A-1位までと、B+1-B+A-1までをペアリング
+        ll ans = 2 * (A - 1);
+
+        // A+1からB-1までの数
+        ll ok = 0;
+        ll ng = B - A;
+        while (ng - ok > 1){
+            ll x = (ng + ok) / 2;
+
+            // 中間くらいを評価
+            bool valid = true;
+            ll m = x/2;
+            REPN(c, max(0ll, m-2), min(m+2, B-A)){
+                ll tmp = (A + c) * (2 * A + x - (A + c));
+                if (tmp >= A * B){
+                    valid = false;
+                }
+            }
+
+            if (valid){
+                ok = x;
+            } else {
+                ng = x;
+            }
         }
 
-        print("B", B);
-        set<int> b;
-        REPN(i, 1, B){
-            print(i, (X-1) / i);
-            b.emplace((X-1)/i);
-        }
-
-        print(a.size(), b.size(), a.size() + b.size());
+        ans += ok;
+        print(ans);
 
     }
 

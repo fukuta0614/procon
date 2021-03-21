@@ -39,19 +39,6 @@ struct EratosthenesSieve{
     }
 };
 
-struct CombinationGenerator {
-    ll sup, ret;
-    bool first;
-    CombinationGenerator(int n, int k): sup(1ll<<n), ret((1ll<<k)-1) {first = true;}
-    ll operator()(){
-        if (first) {first = false; return ret;}
-        if (ret == 0) return -1;
-        ll x = ret & -ret, y = ret + x;
-        ret = ((ret & ~y) / x >> 1) | y;
-        return ret < sup ? ret : -1;
-    }
-};
-
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());

@@ -2,11 +2,11 @@
 #pragma GCC optimize ("O3")
 
 #include <bits/stdc++.h>
-#ifdef LOCAL
-#include "../../debug_util/cxx-prettyprint/prettyprint.hpp"
-#include "../../debug_util/rng.hpp"
-#include "../../debug_util/timer.hpp"
-#endif
+//#ifdef LOCAL
+//#include "../../debug_util/cxx-prettyprint/prettyprint.hpp"
+//#include "../../debug_util/rng.hpp"
+//#include "../../debug_util/timer.hpp"
+//#endif
 using namespace std;
 
 typedef long long ll;
@@ -33,6 +33,20 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    string S;
+    cin >> S;
+
+    bool ok = true;
+    for (int i = 0; i < S.size(); i += 2) {
+//        ok &= 'a' <= S[i] && S[i] <= 'z';
+        ok &= bool(islower(S[i]));
+    }
+    for (int i = 1; i < S.size(); i += 2) {
+//        ok &= 'A' <= S[i] && S[i] <= 'Z';
+        ok &= bool(isupper(S[i]));
+    }
+
+    print(ok ? "Yes" : "No");
 
     return 0;
 }

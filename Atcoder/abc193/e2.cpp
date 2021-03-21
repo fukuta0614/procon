@@ -73,7 +73,24 @@ int main() {
         cin >> X >> Y >> P >> Q;
 
         ll ans = -1;
-        REP(i, Y) REP(j, Q){
+
+        REP(j, Q){
+            int i = 0;
+            ll n1 = 2*X + 2*Y;
+            ll b1 = X + i;
+            ll n2 = P + Q;
+            ll b2 = P + j;
+
+            auto res = ChineseRem(b1, n1, b2, n2);
+            if (res.second == -1){
+                continue;
+            }
+            ll tmp = res.first;
+            ans = ans == -1 ? tmp : min(ans, tmp);
+        }
+
+        REP(i, Y) {
+            int j = 0;
             ll n1 = 2*X + 2*Y;
             ll b1 = X + i;
             ll n2 = P + Q;

@@ -29,6 +29,10 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int A, B, C;
+    cin >> A >> B >> C;
+
+    print(A+B>=C ? "Yes" : "No");
 
     return 0;
 }

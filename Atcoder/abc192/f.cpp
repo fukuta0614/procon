@@ -19,7 +19,7 @@ typedef pair<int, int> P;
 #define REPN_REV(i, m, n) for (int i = (int)(n) - 1 ; i >= m ; --i)
 #define ALL(x) x.begin(), x.end()
 
-#define INF (ll)(1e9)
+#define INF (ll)(2e18)
 #define MOD (1000000007)
 
 #define print2D(h, w, arr) REP(i, h) { REP(j, w) cout << arr[i][j] << " "; cout << endl; }
@@ -33,6 +33,35 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    ll N, X;
+    cin >> N >> X;
+    vector<ll> A(N);
+    REP(i, N) cin >> A[i];
+
+    ll ans = INF;
+    REPN(K, 1, N+1) {
+
+        vector<vector<ll>> dp(K+1, vector<ll>(K, -1));
+        dp[0][0] = 0;
+        REP(i, N) {
+            ll r = A[i] % K;
+            REP_REV(j, K) {
+                REP(k, K){
+                    if (dp[j][k] == -1) continue;
+                    dp[j+1][(k + r) % K] = max(dp[j+1][(k + r) % K], dp[j][k] + A[i]);
+                }
+            }
+        }
+//        print(dp);
+        if (dp[K][X%K] == -1) continue;
+
+        assert((X - dp[K][X%K]) % K == 0);
+
+        ll tmp = (X - dp[K][X%K]) / K;
+        ans = min(ans, tmp);
+    }
+
+    print(ans);
 
     return 0;
 }

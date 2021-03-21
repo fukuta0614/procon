@@ -33,6 +33,12 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int X;
+    cin >> X;
+
+    int ans = 100 - (X % 100);
+    print(ans);
+
 
     return 0;
 }

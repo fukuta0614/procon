@@ -61,6 +61,30 @@ pair<long long, long long> ChineseRem(long long b1, long long m1, long long b2, 
     return make_pair(r, m);
 }
 
+//// n! = a x p^e としたときの a mod pを求める O(log_p n)
+//ll mod_fact(ll n, ll p, ll &e) {
+//    e = 0;
+//    if (n == 0) return 1;
+//
+//    // pの倍数の部分
+//    ll res = mod_fact(n / p, p, e);
+//    e += n / p;
+//
+//    if (n / p % 2 != 0) {
+//        return res * (p - fact[n % p]) % p;
+//    } else {
+//        return res * fact[n % p] % p;
+//    }
+//}
+//
+//ll mod_comb(ll n, ll k, ll p) {
+//    if (n < 0 || k < 0 || n < k) return 0;
+//    ll e1, e2, e3;
+//    ll a1 = mod_fact(n, p, e1), a2 = mod_fact(k, p, e2), a3 = mod_fact(n - k, p, e3);
+//    if (e1 > e2 + e3) return 0;
+//    return a1 * mod_inverse(a2 * a3 % p, p) % p;
+//}
+
 int main() {
 #ifdef LOCAL
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());

@@ -3,7 +3,7 @@ add_definitions(-DLOCAL)
 add_definitions(-ftrapv)
 add_definitions(-D_GLIBCXX_DEBUG)
 project(abc192)
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++14)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -fsanitize=undefined -std=c++17")
 
 add_executable(abc192_a a.cpp)
 add_executable(abc192_b b.cpp)

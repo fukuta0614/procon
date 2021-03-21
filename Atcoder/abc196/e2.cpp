@@ -39,80 +39,26 @@ void solve(){
     vector<ll> X(Q);
     REP(i, Q) cin >> X[i];
 
-//    std::random_device rd;
-//    auto x = rd();
-//    std::mt19937 mt(x);
-//    N = 10;
-//    A.assign(N, 0);
-//    T.assign(N, 0);
-//    REP(i, N) A[i] = mt() % 10000, T[i] = (mt() % 3)+1;
-//    Q = 10;
-//    X.assign(Q, 0);
-//    REP(i, Q) X[i] = mt() % 1000000;
-//
-//    auto Y = X;
-//    REP(i, N){
-//        REP(j, Q){
-//            if (T[i] == 1){
-//                Y[j] += A[i];
-//            } else if (T[i] == 2){
-//                Y[j] = max(Y[j], A[i]);
-//            } else {
-//                Y[j] = min(Y[j], A[i]);
-//            }
-//        }
-//    }
-
-    vector<int> order(Q);
-    iota(ALL(order), 0);
-    sort(ALL(order), [&](int i, int j){ return X[i] < X[j];});
-    sort(ALL(X));
-
     ll sm = 0;
-    int mn=0, mx=Q-1;
+    ll sup=INF, inf=-INF;
     REP(i, N){
 
         if (T[i] == 1){
             sm += A[i];
+            sup += A[i];
+            inf += A[i];
         } else if (T[i] == 2){
-            X[mn] = max(X[mn], A[i] - sm);
-            while (mn < mx && X[mn+1] <= A[i] - sm) {
-                mn++;
-                X[mn] = A[i] - sm;
-            }
+            inf = max(inf, A[i]);
+            sup = max(sup, A[i]);
         } else {
-            X[mx] = min(X[mx], A[i] - sm);
-            while (mn < mx && X[mx-1] >= A[i] - sm) {
-                mx--;
-                X[mx] = A[i] - sm;
-            }
+            sup = min(sup, A[i]);
+            inf = min(inf, A[i]);
         }
     }
 
-    ll a = X[mn];
-    ll b = X[mx];
-    if (mx == mn){
-        REP(i, Q){
-            X[i] = a + sm;
-        }
-    } else {
-        REP(i, mn+1){
-            X[i] = a + sm;
-        }
-        REPN(i, mn+1, mx){
-            X[i] += sm;
-        }
-        REPN(i, mx, Q){
-            X[i] = b + sm;
-        }
-    }
-
-    vector<ll> ans(Q);
     REP(i, Q){
-        ans[order[i]] = X[i];
-    }
-    REP(i, Q){
-        print(ans[i]);
+        ll ans = max(min(X[i] + sm, sup), inf);
+        print(ans);
     }
 }
 

@@ -29,6 +29,15 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
+    int A, B, C, X;
+    cin >> A >> B >> C >> X;
+
+    int ans = 0;
+    REP(i, A+1) REP(j, B+1) REP(k, C+1){
+        ans += (X == 500*i + 100*j + 50*k);
+    }
+
+    print(ans);
 
     return 0;
 }

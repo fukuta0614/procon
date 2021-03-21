@@ -130,7 +130,10 @@ int main() {
     Rational a(3, 5);
     Rational b(1, 2);
     Rational c = a * b;
+    print(c);
 
+    Rational d = 2 * a;
+    print(d);
 
     return 0;
 }
