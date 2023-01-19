@@ -1,12 +1,12 @@
 // abc204_e
-#pragma GCC optimize ("O3")
+//#pragma GCC optimize ("O3")
 
 #include <bits/stdc++.h>
-#ifdef LOCAL
-#include "../../debug_util/cxx-prettyprint/prettyprint.hpp"
-#include "../../debug_util/rng.hpp"
-#include "../../debug_util/timer.hpp"
-#endif
+//#ifdef LOCAL
+//#include "../../debug_util/cxx-prettyprint/prettyprint.hpp"
+//#include "../../debug_util/rng.hpp"
+//#include "../../debug_util/timer.hpp"
+//#endif
 using namespace std;
 
 using ll = long long;
@@ -32,10 +32,10 @@ struct Graph {
 
     struct Edge {
         int u, v;
-        ll c, d;
+        ll w;
         Edge() {}
-        Edge(int u, int v, ll c, ll d) : u(u), v(v), c(c), d(d) {}
-        friend ostream& operator<<(ostream& os, const Edge& e) {cout << "(" << e.u << "->" << e.v << "," << e.c << ")"; return os;}
+        Edge(int u, int v, ll w) : u(u), v(v), w(w) {}
+        friend ostream& operator<<(ostream& os, const Edge& e) {cout << "(" << e.u << "->" << e.v << "," << e.w << ")"; return os;}
     };
 
     int n;
@@ -43,9 +43,8 @@ struct Graph {
     vector<vector<Edge>> edges;
     Graph(int n): n(n), edges(n) {}
 
-    void add_edge(int u, int v, ll c, ll d){
-        edges[u].emplace_back(u, v, c, d);
-        edges[v].emplace_back(v, u, c, d);
+    void add_edge(int u, int v, ll c){
+        edges[u].emplace_back(u, v, c);
     }
 
     long double f(long double x, long double d){
@@ -75,7 +74,7 @@ struct Graph {
         return min({a, b, c});
     }
 
-    ll dijkstra(int s, int t){
+    vector<ll> dijkstra(int s){
 
         priority_queue<P, vector<P>, greater<> > pq;
         pq.push(P(0, s));
@@ -89,16 +88,8 @@ struct Graph {
             ll cost = p.first;
             int u = p.second;
 
-            if (u == t){
-                return cost;
-            }
-
             for (auto edge: edges[u]){
-                if (cost + edge.c >= dist[edge.v]){
-                    continue;
-                }
-                ll ncost = get_min(cost, edge.d) + edge.c;
-//                ll ncost = cost + edge.c;
+                ll ncost = cost + edge.w;
 
                 if (ncost < dist[edge.v]){
                     dist[edge.v] = ncost;
@@ -106,7 +97,7 @@ struct Graph {
                 }
             }
         }
-        return dist[t] == INF ? -1 : dist[t];
+        return dist;
     }
 };
 
@@ -116,28 +107,24 @@ int main() {
     ifstream in("../arg.txt"); cin.rdbuf(in.rdbuf());
 #endif
 
-    int N, M;
-    cin >> N >> M;
-    N = 1e5;
-    M = 1e5;
+    int N, M, r;
+    cin >> N >> M >> r;
     Graph g(N);
 
-    std::mt19937 mt(4);
-
     REP(i, M){
-        ll a, b, c, d;
-//        cin >> a >> b >> c >> d;
-//        a--; b--;
-        a = mt() % N;
-        b = mt() % N;
-        c = mt() % ll(1e9);
-        d = mt() % ll(1e9);
-        c = d = 0;
-        g.add_edge(a, b, c, d);
+        ll a, b, c;
+        cin >> a >> b >> c;
+        g.add_edge(a, b, c);
     }
 
-    ll ans = g.dijkstra(0, N-1);
-    print(ans);
+    vector<ll> ans = g.dijkstra(r);
+    REP(i, N){
+        if (ans[i] == INF){
+            print("INF");
+        } else {
+            print(ans[i]);
+        }
+    }
 
     return 0;
 }

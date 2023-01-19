@@ -39,10 +39,10 @@ int main() {
 
     vector<int> X;
     for (auto e: mp) X.emplace_back(e.second);
+    sort(ALL(X));
 
     int M = X.size();
-
-    vector<int> nums;
+    vector<int> nums(N+1);
     ll sm = 0;
     int idx = 0;
     REPN(n, 1, N+1){
@@ -50,31 +50,23 @@ int main() {
             sm += X[idx];
             idx++;
         }
-        nums.emplace_back(sm + n * (M - idx));
+        nums[n] = sm + n * (M - idx);
     }
 
-    print(nums);
-
-    vector<int> ans(N);
     REPN(k, 1, N+1){
 
-        int ok = 0;
-        int ng = N+1;
+        ll ok = 0;
+        ll ng = N+1;
         while (ng - ok > 1){
-            int x = (ok + ng) / 2;
+            ll x = (ok + ng) / 2;
 
-            bool valid;
-            if (nums[x] >= x * k;){
+            if (nums[x] >= x * k){
                 ok = x;
             } else {
                 ng = x;
             }
         }
-        ans[k-1] = ok;
-    }
-
-    REP(i, N){
-        print(ans[i]);
+        print(ok);
     }
 
     return 0;

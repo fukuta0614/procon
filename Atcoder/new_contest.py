@@ -4,9 +4,13 @@ import sys, os
 contest_name = sys.argv[1]
 if len(sys.argv) == 3:
     alphabets = "abcdefghijklmnopqrstuvwxyz"
-    questions = [ alphabets[i] for i in range(int(sys.argv[2]))]
+    if int(sys.argv[2]) <= len(alphabets):
+        questions = [alphabets[i] for i in range(int(sys.argv[2]))]
+    else:
+        questions = ['{:03d}'.format(i) for i in range(int(sys.argv[2]))]
 else:
     questions = ['a', 'b', 'c', 'd', 'e', 'f']
+    # questions = ['{:03d}'.format(i) for i in range(1, 91)]
 
 os.mkdir(contest_name)
 
@@ -39,7 +43,8 @@ head = ["cmake_minimum_required(VERSION {})\n".format(version),
         "add_definitions(-ftrapv)\n",
         "add_definitions(-D_GLIBCXX_DEBUG)\n",
         "project({})\n".format(contest_name),
-        'set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g -fsanitize=undefined -Wall -std=c++17")\n',
+        # 'set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g -fsanitize=undefined -Wall -std=c++17")\n',
+        'set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-g -Wall -std=c++17")\n',
         "include_directories(../../Library/ac-library)",
         "\n"]
 

@@ -7,6 +7,9 @@
 #include "../../debug_util/rng.hpp"
 #include "../../debug_util/timer.hpp"
 #endif
+
+#include <atcoder/all>
+
 using namespace std;
 
 using ll = long long;
@@ -26,7 +29,7 @@ using P = pair<int, int>;
 #define print_line(vec, n) {for(int idx=0;idx<(n-1);idx++) cout << (vec)[idx] << " "; cout << (vec)[(n)-1] << endl;}
 template<class T> void print(const T& x){cout << x << "\n";}
 template<class T, class... A> void print(const T& first, const A&... rest) { cout << first << " "; print(rest...); }
-struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
+//struct PreMain {PreMain(){cin.tie(0);ios::sync_with_stdio(false);cout<<fixed<<setprecision(20);}} premain;
 
 ll func(ll n, ll k){
 
@@ -47,21 +50,26 @@ int main() {
     ll N, K;
     cin >> N >> K;
 
-    vector<ll> table(3*N+1);
+//    vector<ll> table(3*N-2);
+//    REPN(i, 3, 3*N+1){
+//        table[i-3] = func(N, i-3);
+//    }
+
+    vector<ll> a(N, 1);
+    vector<ll> b = atcoder::convolution_ll(a, a);
+    vector<ll> table2 = atcoder::convolution_ll(a, b);
+
     ll sm = 0;
     ll x = 0;
     ll r = 0;
-    REPN(i, 3, 3*N+1){
-        table[i] = func(N, i-3);
-        if (sm + table[i] >= K){
+    REPN(i, 3, 3*N+1) {
+        if (sm + table2[i-3] >= K){
             x = i;
             r = K - sm;
             break;
         }
-        sm += table[i];
+        sm += table2[i-3];
     }
-
-    print(x, table[x], r);
 
     sm = 0;
     REPN(i, 1, x){
@@ -91,26 +99,6 @@ int main() {
             continue;
         }
     }
-
-//    ll sm = 0;
-//    REPN(i, 3, 3*N+1) {
-//        sm += table[i];
-//    }
-//    print(table);
-
-
-
-
-//    vector<ll> x(3*N+1);
-//    REP(i, N) REP(j, N) REP(k, N){
-//        x[i+j+k+3]++;
-//    }
-//    print(x);
-//    sm = 0;
-//    REPN(i, 3, 3*N+1) {
-//        sm += x[i];
-//    }
-//    print(sm);
 
     return 0;
 }

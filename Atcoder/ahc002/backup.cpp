@@ -41,17 +41,26 @@ struct Timer {
     }
 };
 
+unsigned int xor_shift() {
+    static unsigned int y = 2463534242;
+    y = y ^ (y << 13);
+    y = y ^ (y >> 17);
+    return y = y ^ (y << 5);
+}
+
 struct Grid {
 
     const int H, W;
-    int S[52][52], T[50][50];
+    int S[50][50], T[50][50];
     Timer timer;
 
-    const int di[8]={ 1, 0, -1, 0, -1, 1, -1, 1};
-    const int dj[8]={ 0, 1, 0, -1, -1, -1, 1, 1};
-    bool bound_check(int i, int j) const {return (0 <= i) && (i < H) && (0 <= j) && (j < W);}
+    const int di[4]={ 1, 0, 0, -1, };
+    const int dj[4]={ 0, 1, -1, 0, };
+    [[nodiscard]] bool bound_check(int i, int j) const {return (0 <= i) && (i < H) && (0 <= j) && (j < W);}
 
-    const char order[4] = {'D', 'R', 'U', 'L'};
+    const char order[4] = {'D', 'R', 'L', 'U'};
+
+//    map<char, int> rev = {{'D',0}, {'R',1}, {'L',2}, {'U',3}};
 
     [[nodiscard]] int hash_func(int i, int j) const {
         return i * W + j;
@@ -63,113 +72,99 @@ struct Grid {
         return tie(i, j);
     }
 
-    Grid(int H, int W): H(H), W(W){}
+    Grid(int H, int W, vector<vector<int>>& S_tmp, vector<vector<int>>& T_tmp): H(H), W(W){
+        REP(i, H) REP(j, W){
+                S[i][j] = S_tmp[i][j];
+                T[i][j] = T_tmp[i][j];
+            }
+    }
 
-    vector<bool> used;
+    bool used[2500]{};
     int score = 0;
     int max_score = 0;
 
     string sequence;
     string ans;
 
-    int cnt = 0;
+    void dfs_norec(int si, int sj, int& counter) noexcept {
 
-    void dfs(int i, int j){
-        cnt++;
+        vector<tuple<int, int, int>> stk;
+        stk.emplace_back(si, sj, 0);
 
+        int rev[26];
+        rev['D' - 'A'] = 0;
+        rev['R' - 'A'] = 1;
+        rev['L' - 'A'] = 2;
+        rev['U' - 'A'] = 3;
+
+        int i = si;
+        int j = sj;
         used[S[i][j]] = true;
-        score += T[i][j];
-
-        if (score > max_score){
-            max_score = score;
-            ans = sequence;
-        }
-
-        if (timer.get_ms() > 1900){
-            throw 1;
-        }
-
-        REP(k, 4){
-            int ni = i + di[k];
-            int nj = j + dj[k];
-//            if (not bound_check(ni, nj)) continue;
-            if (used[S[ni][nj]]) continue;
-
-            sequence += order[k];
-            dfs(ni, nj);
-            sequence.pop_back();
-        }
-
-        score -= T[i][j];
-        used[S[i][j]] = false;
-
-    }
-
-    void dfs_norec(int si, int sj){
-
-        vector<tuple<int, int, int, int>> stk;
-        stk.emplace_back(0, 0, si, sj);
 
         while (not stk.empty()) {
-            auto [idx, k, i, j] = stk.back(); stk.pop_back();
+            counter++;
+            // auto [pi, pj, k] = stk.back(); stk.pop_back();
+            auto [pi, pj, k] = stk.back();
 
-            used[S[i][j]] = true;
-            score += T[i][j];
+            while (i != pi || j != pj){
+                score -= T[i][j];
+                used[S[i][j]] = false;
 
-            if (score > max_score){
-                max_score = score;
-                ans = sequence;
-            }
-
-            if (timer.get_ms() > 1900){
-                throw 1;
-            }
-
-            REP(k, 4){
-                int ni = i + di[k];
-                int nj = j + dj[k];
-                if (not bound_check(ni, nj)) continue;
-                if (used[S[ni][nj]]) continue;
-
-                sequence += order[k];
-                dfs(ni, nj);
+                char c = sequence.back();
                 sequence.pop_back();
+                i = i - di[rev[c - 'A']];
+                j = j - dj[rev[c - 'A']];
             }
 
-            score -= T[i][j];
-            used[S[i][j]] = false;
+
+            bool is_leaf = true;
+            for (int kn=k; kn<4; kn++) {
+                int ni = i + di[kn];
+                int nj = j + dj[kn];
+                if (not bound_check(ni,nj)) continue;
+                int idx = S[ni][nj];
+                if (used[idx]) continue;
+
+                used[idx] = true;
+                is_leaf = false;
+                std::get<2>(stk.back()) = kn+1;
+                stk.emplace_back(ni,nj,0);
+                i=ni;
+                j=nj;
+                sequence += order[kn];
+                score += T[i][j];
+                break;
+            }
+            if (is_leaf) {
+                stk.pop_back();
+                if (score > max_score){
+                    max_score = score;
+                    ans = sequence;
+                }
+            }
+            if (counter % 100 == 0 && timer.get_ms() > 1950){
+                return;
+            }
         }
-
-
     }
 
-    string solve(int si, int sj, vector<vector<int>>& S_org, vector<vector<int>>& T_org){
+    string solve(int si, int sj){
 
         // init
         int mx = 0;
-        REP(i, H) REP(j, W){
-            mx = max(mx, S_org[i][j]);
-
-            S[i+1][j+1] = S_org[i][j];
-            T[i][j] = T_org[i][j];
-        }
-
-        mx++;
-        REP(i, H) S[i][0] = S[i][W+1] = mx;
-        REP(j, W) S[0][j] = S[H+1][j] = mx;
-
-        used.assign(mx+1, false);
-        used[mx] = true;
-
-        si++; sj++;
+        // REP(i, H) REP(j, W) mx = max(mx, S[i][j]);
+        // used.assign(mx+1, false);
 
         // exec
         timer.init();
-        try{
-            dfs(si, sj);
-        } catch(int& n){
-            ;
-        }
+        int counter = 0;
+        dfs_norec(si, sj, counter);
+        cerr << counter << "\n";
+//        try{
+//            dfs(si, sj);
+//        } catch(int& n){
+//            ;
+//        }
         return ans;
     }
 
@@ -187,15 +182,15 @@ int main() {
     REP(i, 50) REP(j, 50) cin >> S[i][j];
     REP(i, 50) REP(j, 50) cin >> T[i][j];
 
-    Grid g(50, 50);
+    Grid g(50, 50, S, T);
 
-    string ans = g.solve(si, sj, S, T);
+    string ans = g.solve(si, sj);
     print(ans);
 
 #ifdef LOCAL
     print(g.max_score);
-    print(g.cnt);
 #endif
 
     return 0;
 }
+
